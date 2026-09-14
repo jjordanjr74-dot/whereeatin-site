@@ -55,7 +55,7 @@
           var cityCount = Object.keys(cities).length;
           band.innerHTML = "<strong>" + list.length + " trucks live</strong> across " +
             cityCount + " Colorado " + (cityCount === 1 ? "city" : "cities") +
-            " \\u2014 and every one of them was added by a human, not a scraper.";
+            " \u2014 and every one of them was added by a human, not a scraper.";
         }
       });
     })
@@ -75,7 +75,7 @@
       var uniq = names.filter(function (n, i) { return names.indexOf(n) === i; }).slice(0, 6);
       el.innerHTML = "Photography: " + uniq.join(", ") +
         (names.length > uniq.length ? " and others" : "") +
-        " \\u2014 via Openverse. Full per-file credits in " +
+        " \u2014 via Openverse. Full per-file credits in " +
         '<a href="assets/credits.json">credits.json</a>. ' +
         "Where We Eatin'? is an independent directory and is not affiliated with any truck listed.";
     })

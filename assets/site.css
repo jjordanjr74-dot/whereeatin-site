@@ -52,9 +52,10 @@ p{margin:0 0 1rem}
 
 /* hero */
 .hero{position:relative;isolation:isolate;padding:86px 0 64px;overflow:hidden}
-.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;
+  filter:blur(1.4px) saturate(1.05);transform:scale(1.04)}
 .hero-scrim{position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(105deg,rgba(42,6,6,.93) 0%,rgba(42,6,6,.86) 42%,rgba(42,6,6,.55) 100%)}
+  background:linear-gradient(105deg,rgba(35,4,4,.95) 0%,rgba(35,4,4,.88) 44%,rgba(35,4,4,.62) 100%)}
 .hero-in{color:#fff;max-width:760px}
 .hero .eyebrow{color:#fca5a5}
 .eyebrow{font:700 .8rem/1 Karla,sans-serif;letter-spacing:.16em;text-transform:uppercase;
