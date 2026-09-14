@@ -16,7 +16,7 @@ body{margin:0;background:var(--bg);color:var(--fg);
 img{max-width:100%;height:auto;display:block}
 a{color:var(--primary-dark)}
 h1,h2,h3,.brand-txt,.foot-brand,.price-n{font-family:"Playfair Display SC",Georgia,serif;font-weight:700;letter-spacing:.01em;margin:0}
-h1{font-size:clamp(2rem,5.4vw,3.7rem);line-height:1.08}
+h1{font-size:clamp(2rem,5.4vw,3.7rem);line-height:1.08;text-wrap:balance}
 h2{font-size:clamp(1.6rem,3.4vw,2.4rem);line-height:1.15;margin-bottom:.6rem}
 h3{font-size:1.12rem;line-height:1.3;margin-bottom:.4rem}
 p{margin:0 0 1rem}
@@ -53,19 +53,21 @@ p{margin:0 0 1rem}
 /* hero */
 .hero{position:relative;isolation:isolate;padding:86px 0 64px;overflow:hidden}
 .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;
-  filter:blur(1.4px) saturate(1.05);transform:scale(1.04)}
+  filter:blur(2.6px) saturate(1.02) brightness(.84);transform:scale(1.05)}
 .hero-scrim{position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(105deg,rgba(35,4,4,.95) 0%,rgba(35,4,4,.88) 44%,rgba(35,4,4,.62) 100%)}
+  background:linear-gradient(100deg,rgba(26,3,3,.96) 0%,rgba(26,3,3,.90) 46%,rgba(26,3,3,.70) 100%)}
 .hero-in{color:#fff;max-width:760px}
 .hero .eyebrow{color:#fca5a5}
 .eyebrow{font:700 .8rem/1 Karla,sans-serif;letter-spacing:.16em;text-transform:uppercase;
   color:var(--primary-dark);margin:0 0 .7rem}
-.lede{font-size:clamp(1.03rem,1.7vw,1.22rem);color:rgba(255,255,255,.93);max-width:640px}
-.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 34px}
-.stat-strip{display:flex;flex-wrap:wrap;gap:26px;list-style:none;margin:0;padding:0}
+.lede{font-size:clamp(1.03rem,1.7vw,1.22rem);color:#fff}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 30px}
+.stat-strip{display:flex;flex-wrap:wrap;gap:26px;list-style:none;margin:0;padding:16px 20px;
+  background:rgba(16,2,2,.42);border:1px solid rgba(255,255,255,.16);border-radius:14px;
+  backdrop-filter:blur(7px)}
 .stat-strip li{min-width:120px}
 .stat-n{display:block;font:700 1.55rem/1.1 "Playfair Display SC",Georgia,serif;color:#fff}
-.stat-l{display:block;font-size:.83rem;color:rgba(255,255,255,.85);margin-top:3px}
+.stat-l{display:block;font-size:.86rem;color:rgba(255,255,255,.94);margin-top:3px}
 
 /* bands + sections */
 .band{background:#2a0606;color:#fff;padding:15px 0}
@@ -92,11 +94,13 @@ p{margin:0 0 1rem}
 .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
   padding:24px 22px;box-shadow:var(--shadow)}
 .card p{margin:0;color:var(--muted);font-size:.96rem}
-.card-hr{border-color:var(--gold-border);background:var(--gold-bg)}
+.card-hr{border:1px solid #d9a93a;background:linear-gradient(180deg,#fffdf4 0%,#fdf1d3 100%);
+  box-shadow:0 16px 36px rgba(138,90,6,.18)}
 .card-hr .ico-lg{color:var(--gold)}
 .badge-hr{display:inline-block;font:700 .62rem/1 Karla,sans-serif;text-transform:uppercase;
-  letter-spacing:.1em;color:#fff;background:var(--gold);padding:4px 7px;border-radius:5px;
-  vertical-align:middle;margin-left:5px}
+  letter-spacing:.13em;color:#fffdf4;background:linear-gradient(180deg,#a06b06,#7a4d04);
+  padding:5px 8px;border-radius:5px;vertical-align:middle;margin-left:9px;
+  box-shadow:0 1px 0 rgba(255,255,255,.35) inset}
 
 /* showcase */
 .shot{position:relative}
@@ -135,7 +139,7 @@ p{margin:0 0 1rem}
 .pi-stars{color:#a16207;letter-spacing:1px;font-size:.9rem}
 
 /* pricing */
-.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:26px}
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:26px;align-items:start}
 .price{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
   padding:26px 24px;box-shadow:var(--shadow)}
 .price-alt{border-color:var(--gold-border);background:var(--gold-bg)}
@@ -160,7 +164,7 @@ p{margin:0 0 1rem}
 .foot-links{display:flex;flex-wrap:wrap;gap:20px}
 .foot-links a{color:rgba(255,255,255,.86);text-decoration:none;font-size:.94rem;min-height:44px;display:inline-flex;align-items:center}
 .foot-links a:hover{color:#fff}
-.credits{font-size:.78rem;color:rgba(255,255,255,.62);margin:16px 0 0;line-height:1.6}
+.credits{font-size:.85rem;color:rgba(255,255,255,.76);margin:16px 0 0;line-height:1.65;max-width:900px}
 .credits a{color:#fca5a5}
 
 /* responsive */
