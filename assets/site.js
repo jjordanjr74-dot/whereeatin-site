@@ -29,7 +29,7 @@
 
   // 1. current demo endpoint
   fetchJSON("assets/demo_url.json", 4000)
-    .then(function (d) { if (d && d.url) setDemoHref(d.url); })
+    .then(function (d) { if (d && d.url && d.url.indexOf(location.host) === -1) setDemoHref(d.url); })
     .catch(function () { /* keep the hard-coded fallback link */ });
 
   // 2. live counts from the app itself (public read-only endpoints, CORS-enabled)

@@ -1,5 +1,5 @@
 {
-  "url": "https://jjordanjr74-dot.github.io/whereeatin-site",
+  "url": "",
   "updated": "2026-09-19",
-  "note": "verified by public_url.py; dead tunnel removed"
+  "note": "no public app instance: ingress is intentionally closed (live_public_tunnels.json OFFLINE_LOCKED). The site's roster is generated from vendors_row.db instead."
 }
