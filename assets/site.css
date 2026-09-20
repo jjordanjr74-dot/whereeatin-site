@@ -115,7 +115,7 @@ p{margin:0 0 1em}
 @media (max-width:760px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .stat{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px 18px 16px;box-shadow:var(--shadow-1)}
 .stat b{display:block;font:600 clamp(1.6rem,3vw,2.15rem)/1 var(--font-display);letter-spacing:-.02em}
-.stat span{display:block;margin-top:7px;font-size:.86rem;color:var(--muted)}
+.stat span{display:block;margin-top:7px;font-size:.9rem;color:var(--ink-2);line-height:1.45}
 
 /* ---------------------------------------------------------------- cards */
 .cards{display:grid;gap:18px}
