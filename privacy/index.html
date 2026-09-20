@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Where We Eatin'?</title>
+<meta name="description" content="What Where We Eatin'? collects, why, how long it is kept, and how to have it removed.">
+<meta name="theme-color" content="#dc2626">
+<link rel="canonical" href="https://jjordanjr74-dot.github.io/whereeatin-site/privacy/">
+<style>
+  :root{--ink:#111827;--muted:#4b5563;--line:#e5e7eb;--brand:#dc2626}
+  *{box-sizing:border-box}
+  body{margin:0;background:#fef2f2;color:var(--ink);font:16px/1.6 Karla,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+  main{max-width:760px;margin:0 auto;padding:48px 20px 80px;background:#fff;border-radius:16px;box-shadow:0 8px 30px rgba(17,24,39,.06)}
+  h1{font-size:30px;line-height:1.25;margin:0 0 6px}
+  h2{font-size:19px;margin:32px 0 8px}
+  .sub{color:var(--muted);margin:0 0 24px}
+  table{border-collapse:collapse;width:100%;margin:12px 0}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;font-size:15px;vertical-align:top}
+  th{background:#f9fafb}
+  code{background:#f3f4f6;padding:1px 5px;border-radius:4px;font-size:14px}
+  .note{border-left:4px solid var(--brand);padding:10px 14px;background:#fff5f5;border-radius:0 8px 8px 0}
+  a{color:var(--brand)}
+  footer{margin-top:40px;color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+<main>
+  <h1>Privacy Policy</h1>
+  <p class="sub">Where We Eatin'? — the live food-truck radar for Pueblo and Colorado Springs.
+  Last updated: 2026-09-19.</p>
+
+  <div class="note">
+    <strong>Short version:</strong> we collect only what a truck listing, a reservation enquiry or a
+    review needs. We do not sell data, we do not run advertising trackers, and card details never
+    touch our servers.
+  </div>
+
+  <h2>What we collect, and why</h2>
+  <table>
+    <tr><th>What</th><th>Why</th><th>Where it lives</th></tr>
+    <tr><td>Vendor listing details (business name, category, city, current location, specials, phone)</td>
+        <td>To show the truck on the radar and let customers contact it directly</td>
+        <td>Vendor table on the operator's own machine</td></tr>
+    <tr><td>Order and enquiry details (customer name, phone, items, event type, guest count, city, budget)</td>
+        <td>To pass a catering or order request to the vendor that has to fulfil it</td>
+        <td>Orders / event-planning tables</td></tr>
+    <tr><td>Review content (stars, recommended flag, comment, first name, last initial)</td>
+        <td>To show other customers how a truck has performed. Full surnames are deliberately not asked for</td>
+        <td>Reviews table</td></tr>
+    <tr><td>A one-way hash of the reviewer's IP address</td>
+        <td>Only to slow down fake or duplicated reviews. The original address is not stored and cannot be recovered from the hash</td>
+        <td>Reviews table</td></tr>
+    <tr><td>Location you type or share when you press &ldquo;use my location&rdquo;</td>
+        <td>To sort trucks by distance. Only the search text and resolved coordinates are cached, to avoid re-asking the geocoder</td>
+        <td>Geocode cache</td></tr>
+    <tr><td>Payment session reference</td>
+        <td>To reconcile a completed vendor subscription or booking fee</td>
+        <td>Handled by Stripe; we store only the session id, never a card number or CVC</td></tr>
+  </table>
+
+  <h2>Who else is involved</h2>
+  <ul>
+    <li><strong>GitHub Pages</strong> hosts this site and sees standard web-server logs (IP, user agent).</li>
+    <li><strong>OpenStreetMap Nominatim</strong> resolves the location text you type into coordinates.</li>
+    <li><strong>Stripe</strong> processes payments when a vendor pays. Their privacy policy governs card data.</li>
+    <li><strong>Telegram</strong>: operational notices (for example, a nightly batch summary) go to the
+        operator's own Telegram account, not to a marketing list.</li>
+  </ul>
+
+  <h2>How long we keep it</h2>
+  <ul>
+    <li>Vendor listings: as long as the truck is listed, and removed on request.</li>
+    <li>Orders and enquiries: kept until the event is served and any dispute window passes.</li>
+    <li>Reviews: kept while the listing is live; removed with the listing.</li>
+    <li>Geocode cache: transient, overwritten as new searches arrive.</li>
+  </ul>
+
+  <h2>Your choices</h2>
+  <ul>
+    <li>Ask us to correct or delete a listing, a review, or an enquiry — including one you submitted
+        as a customer.</li>
+    <li>Vendors can ask to be removed from the radar at any time; the listing is deleted, not hidden.</li>
+    <li>We do not send marketing messages to customers. Vendor outreach is one-to-one and stops when
+        asked.</li>
+  </ul>
+
+  <h2>Contact</h2>
+  <p><strong>Pending:</strong> this page ships before a support mailbox exists on a domain we control
+  — the contact address is being created and will be published here before the Android listing goes
+  live. Until then, a vendor or customer can request removal through the phone number on their own
+  listing or via the same channel they were contacted on.</p>
+
+  <h2>Children</h2>
+  <p>This service is intended for a general audience and is not directed at children under 13. We do
+  not knowingly collect personal information from children.</p>
+
+  <footer>
+    <p><a href="../">← Back to the radar</a></p>
+    <p>Prices shown on listings are marked &ldquo;reported&rdquo; unless a vendor has confirmed them.</p>
+  </footer>
+</main>
+</body>
+</html>
