@@ -42,6 +42,13 @@
   <section class="panel">
     <div class="row">
       <button class="primary" id="locate">Use my location</button>
+      <select id="radius" aria-label="Only show trucks within">
+        <option value="999">any distance</option>
+        <option value="5">within 5 miles</option>
+        <option value="10">within 10 miles</option>
+        <option value="25">within 25 miles</option>
+        <option value="60">within 60 miles</option>
+      </select>
       <select id="origin" aria-label="Measure distances from">
         <option value="38.2544,-104.6091">from Downtown Pueblo</option>
         <option value="38.3512,-104.72">from Pueblo West</option>
@@ -60,7 +67,7 @@
 </div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-var VENDORS = [{"id": 14, "name": "Big Papa's Grill", "cuisine": "Gourmet Burgers & Smoked BBQ", "area": "Downtown Pueblo & Riverwalk", "city": "Pueblo", "lat": 38.2544, "lon": -104.6091, "phone": "(719) 545-2272", "open": true, "reported": null, "source": null}, {"id": 15, "name": "Mateo's Street Tacos", "cuisine": "Authentic Mexican Street Food", "area": "Northern Ave & Pueblo Blvd", "city": "Pueblo", "lat": 38.235, "lon": -104.64, "phone": "(719) 561-1920", "open": true, "reported": null, "source": null}, {"id": 16, "name": "High Grade Catering & Food Truck", "cuisine": "Caribbean & Southern Fusion BBQ", "area": "Pueblo City Park Events", "city": "Pueblo", "lat": 38.28, "lon": -104.63, "phone": "(719) 250-8819", "open": true, "reported": null, "source": null}, {"id": 17, "name": "Sapo Guapo Tacos", "cuisine": "Gourmet Taco Trailer", "area": "Union Ave Historic District", "city": "Pueblo", "lat": 38.2612, "lon": -104.615, "phone": "(719) 542-7276", "open": true, "reported": null, "source": null}, {"id": 18, "name": "Phat Frankie's BBQ", "cuisine": "Texas-Style Smoked Meats", "area": "Pueblo West / McCulloch Blvd", "city": "Pueblo", "lat": 38.3512, "lon": -104.72, "phone": "(719) 647-9100", "open": true, "reported": null, "source": null}, {"id": 19, "name": "Josh & John's Scoop Bus", "cuisine": "Artisan Mobile Ice Cream Bus", "area": "Tejon Street & Pikes Peak Plaza", "city": "Colorado Springs", "lat": 38.8339, "lon": -104.8214, "phone": "(719) 632-0299", "open": true, "reported": null, "source": null}, {"id": 20, "name": "Luchal's Soulful Seafood", "cuisine": "Gourmet Seafood & Soul Food Truck", "area": "Platte Ave & Academy Blvd", "city": "Colorado Springs", "lat": 38.84, "lon": -104.75, "phone": "(719) 358-7014", "open": true, "reported": null, "source": null}, {"id": 21, "name": "Springs Cupcake Truck", "cuisine": "Mobile Gourmet Bakery & Desserts", "area": "Downtown Colorado Springs / Acacia Park", "city": "Colorado Springs", "lat": 38.8375, "lon": -104.822, "phone": "(719) 473-1002", "open": true, "reported": null, "source": null}, {"id": 22, "name": "Kona Ice of Canon City & Pueblo", "cuisine": "Shaved Ice & Refreshment Truck", "area": "Pueblo Riverwalk & Lake Pueblo", "city": "Pueblo", "lat": 38.27, "lon": -104.62, "phone": "(719) 275-5662", "open": true, "reported": null, "source": null}];
+var VENDORS = [{"id": 14, "name": "Big Papa's Grill", "cuisine": "Gourmet Burgers & Smoked BBQ", "area": "Downtown Pueblo & Riverwalk", "city": "Pueblo", "lat": 38.2544, "lon": -104.6091, "phone": "(719) 545-2272", "open": true, "reported": null, "source": null, "average": 0.0, "reviews": 0, "badge": false}, {"id": 15, "name": "Mateo's Street Tacos", "cuisine": "Authentic Mexican Street Food", "area": "Northern Ave & Pueblo Blvd", "city": "Pueblo", "lat": 38.235, "lon": -104.64, "phone": "(719) 561-1920", "open": true, "reported": null, "source": null, "average": 0.0, "reviews": 0, "badge": false}, {"id": 16, "name": "High Grade Catering & Food Truck", "cuisine": "Caribbean & Southern Fusion BBQ", "area": "Pueblo City Park Events", "city": "Pueblo", "lat": 38.28, "lon": -104.63, "phone": "(719) 250-8819", "open": true, "reported": null, "source": null, "average": 0.0, "reviews": 0, "badge": false}, {"id": 17, "name": "Sapo Guapo Tacos", "cuisine": "Gourmet Taco Trailer", "area": "Union Ave Historic District", "city": "Pueblo", "lat": 38.2612, "lon": -104.615, "phone": "(719) 542-7276", "open": true, "reported": null, "source": null, "average": 0.0, "reviews": 0, "badge": false}, {"id": 18, "name": "Phat Frankie's BBQ", "cuisine": "Texas-Style Smoked Meats", "area": "Pueblo West / McCulloch Blvd", "city": "Pueblo", "lat": 38.3512, "lon": -104.72, "phone": "(719) 647-9100", "open": true, "reported": null, "source": null, "average": 0.0, "reviews": 0, "badge": false}, {"id": 19, "name": "Josh & John's Scoop Bus", "cuisine": "Artisan Mobile Ice Cream Bus", "area": "Tejon Street & Pikes Peak Plaza", "city": "Colorado Springs", "lat": 38.8339, "lon": -104.8214, "phone": "(719) 632-0299", "open": true, "reported": null, "source": null, "average": 0.0, "reviews": 0, "badge": false}, {"id": 20, "name": "Luchal's Soulful Seafood", "cuisine": "Gourmet Seafood & Soul Food Truck", "area": "Platte Ave & Academy Blvd", "city": "Colorado Springs", "lat": 38.84, "lon": -104.75, "phone": "(719) 358-7014", "open": true, "reported": null, "source": null, "average": 0.0, "reviews": 0, "badge": false}, {"id": 21, "name": "Springs Cupcake Truck", "cuisine": "Mobile Gourmet Bakery & Desserts", "area": "Downtown Colorado Springs / Acacia Park", "city": "Colorado Springs", "lat": 38.8375, "lon": -104.822, "phone": "(719) 473-1002", "open": true, "reported": null, "source": null, "average": 0.0, "reviews": 0, "badge": false}, {"id": 22, "name": "Kona Ice of Canon City & Pueblo", "cuisine": "Shaved Ice & Refreshment Truck", "area": "Pueblo Riverwalk & Lake Pueblo", "city": "Pueblo", "lat": 38.27, "lon": -104.62, "phone": "(719) 275-5662", "open": true, "reported": null, "source": null, "average": 0.0, "reviews": 0, "badge": false}];
 var map = L.map('map').setView([38.35, -104.7], 9);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 18, attribution: '&copy; OpenStreetMap contributors'
@@ -69,7 +76,8 @@ var markers = {};
 VENDORS.forEach(function (v) {
   v.marker = L.marker([v.lat, v.lon]).addTo(map);
   var phone = v.phone ? '<br><a href="tel:' + v.phone.replace(/[^0-9+]/g, '') + '">' + v.phone + '</a>' : '';
-  v.marker.bindPopup('<strong>' + v.name + '</strong><br>' + v.cuisine + '<br>' + v.area +
+  var rt = (v.reviews ? '★ ' + v.average.toFixed(1) + ' (' + v.reviews + ')' + (v.badge ? ' HIGHLY RECOMMENDED' : '') + '<br>' : '');
+  v.marker.bindPopup('<strong>' + v.name + '</strong><br>' + rt + v.cuisine + '<br>' + v.area +
     ' <span class="meta">(' + v.city + ')</span>' + phone);
 });
 var youMarker = null;
@@ -96,19 +104,30 @@ function render(origin, label) {
   var sorted = VENDORS.slice().sort(function (a, b) {
     return miles(origin, [a.lat, a.lon]) - miles(origin, [b.lat, b.lon]);
   });
+  var maxMi = parseFloat(document.getElementById('radius').value);
+  sorted = sorted.filter(function (v) { return miles(origin, [v.lat, v.lon]) <= maxMi; });
+  if (!sorted.length) {
+    list.innerHTML = '<li class="meta">No tracked truck inside that radius. Widen it, or move the origin.</li>';
+  }
   sorted.forEach(function (v) {
     var d = miles(origin, [v.lat, v.lon]);
     var li = document.createElement('li');
     li.innerHTML = '<span class="dist">' + d.toFixed(1) + ' mi</span>' +
       '<span class="name">' + v.name + '</span>' + (v.open ? ' <span class="badge">open</span>' : '') +
       '<div class="meta">' + v.cuisine + ' &middot; ' + v.area + (v.phone ? ' &middot; ' + v.phone : '') + '</div>' +
-      '<div class="meta">' + (v.reported ? 'vendor reported this spot ' + timeAgo(v.reported) : 'area only &mdash; vendor has not pinged a spot yet') + '</div>';
+      '<div class="meta">' + (v.reported ? 'vendor reported this spot ' + timeAgo(v.reported) : 'area only &mdash; vendor has not pinged a spot yet') + '</div>' +
+      '<div class="meta">' + (v.reviews ? '★ ' + v.average.toFixed(1) + ' from ' + v.reviews + ' review' + (v.reviews === 1 ? '' : 's') : 'no reviews yet') +
+      (v.badge ? ' <span class="badge">HIGHLY RECOMMENDED</span>' : '') + '</div>';
     li.style.cursor = 'pointer';
     li.onclick = function () { map.setView([v.lat, v.lon], 13); v.marker.openPopup(); };
     list.appendChild(li);
   });
   document.getElementById('where').textContent = 'Distances from ' + label + '.';
 }
+document.getElementById('radius').addEventListener('change', function () {
+  var p = document.getElementById('origin').value.split(',').map(Number);
+  render(p, document.getElementById('origin').options[document.getElementById('origin').selectedIndex].text.replace('from ', ''));
+});
 document.getElementById('origin').addEventListener('change', function (e) {
   var p = e.target.value.split(',').map(Number);
   render(p, e.target.options[e.target.selectedIndex].text.replace('from ', ''));
