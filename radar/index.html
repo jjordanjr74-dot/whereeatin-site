@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Live radar — Where We Eatin'?</title>
+<meta name="description" content="See every tracked Southern Colorado food truck on a map, sorted by how far it is from you. Free listings, direct vendor contact, 0% delivery markup.">
+<meta name="theme-color" content="#dc2626">
+<link rel="canonical" href="https://jjordanjr74-dot.github.io/whereeatin-site/radar/">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+  :root{--ink:#111827;--muted:#4b5563;--brand:#dc2626;--paper:#fef2f2;--line:#e5e7eb}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Karla,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+  header{padding:18px 20px 10px;max-width:1100px;margin:0 auto}
+  h1{margin:0 0 4px;font-size:26px}
+  .sub{margin:0;color:var(--muted);font-size:15px}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px 60px;display:grid;grid-template-columns:1fr;gap:18px}
+  @media(min-width:900px){.wrap{grid-template-columns:380px 1fr}}
+  #map{height:520px;border-radius:14px;box-shadow:0 8px 30px rgba(17,24,39,.08)}
+  .panel{background:#fff;border-radius:14px;padding:16px 18px;box-shadow:0 8px 30px rgba(17,24,39,.06)}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  select,button{font:inherit;padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:#fff}
+  button.primary{background:var(--brand);color:#fff;border-color:var(--brand);font-weight:700;cursor:pointer}
+  ol#list{list-style:none;margin:14px 0 0;padding:0}
+  ol#list li{padding:10px 0;border-top:1px solid var(--line)}
+  .name{font-weight:700}
+  .meta{color:var(--muted);font-size:14px}
+  .dist{float:right;font-weight:700;color:var(--brand)}
+  .note{margin:12px 0 0;font-size:13px;color:var(--muted)}
+  a{color:var(--brand)}
+  .badge{display:inline-block;background:#ecfdf5;color:#065f46;border-radius:999px;padding:1px 8px;font-size:12px;font-weight:700}
+</style>
+</head>
+<body>
+<header>
+  <h1>Live radar</h1>
+  <p class="sub">9 trucks tracked across Pueblo, Pueblo West and Colorado Springs. Distances are
+  measured from <strong>you</strong> once you share your location &mdash; nothing is stored.</p>
+</header>
+<div class="wrap">
+  <section class="panel">
+    <div class="row">
+      <button class="primary" id="locate">Use my location</button>
+      <select id="origin" aria-label="Measure distances from">
+        <option value="38.2544,-104.6091">from Downtown Pueblo</option>
+        <option value="38.3512,-104.72">from Pueblo West</option>
+        <option value="38.8339,-104.8214">from Colorado Springs</option>
+        <option value="38.4411,-105.2424">from Cañon City</option>
+      </select>
+    </div>
+    <p class="note" id="where">Distances are from Downtown Pueblo until you share your location.</p>
+    <ol id="list"></ol>
+    <p class="note">Locations are the <em>area</em> each truck parks in, updated by hand from the
+    vendor's own word &mdash; not a GPS feed from the truck. Confirmed listings say so; ask any truck
+    to update its spot through our <a href="../list-your-truck/">listing desk</a>.
+    Data built 2026-09-19.</p>
+  </section>
+  <div id="map"></div>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+var VENDORS = [{"id": 14, "name": "Big Papa's Grill", "cuisine": "Gourmet Burgers & Smoked BBQ", "area": "Downtown Pueblo & Riverwalk", "city": "Pueblo", "lat": 38.2544, "lon": -104.6091, "phone": "(719) 545-2272", "open": true}, {"id": 15, "name": "Mateo's Street Tacos", "cuisine": "Authentic Mexican Street Food", "area": "Northern Ave & Pueblo Blvd", "city": "Pueblo", "lat": 38.235, "lon": -104.64, "phone": "(719) 561-1920", "open": true}, {"id": 16, "name": "High Grade Catering & Food Truck", "cuisine": "Caribbean & Southern Fusion BBQ", "area": "Pueblo City Park Events", "city": "Pueblo", "lat": 38.28, "lon": -104.63, "phone": "(719) 250-8819", "open": true}, {"id": 17, "name": "Sapo Guapo Tacos", "cuisine": "Gourmet Taco Trailer", "area": "Union Ave Historic District", "city": "Pueblo", "lat": 38.2612, "lon": -104.615, "phone": "(719) 542-7276", "open": true}, {"id": 18, "name": "Phat Frankie's BBQ", "cuisine": "Texas-Style Smoked Meats", "area": "Pueblo West / McCulloch Blvd", "city": "Pueblo", "lat": 38.3512, "lon": -104.72, "phone": "(719) 647-9100", "open": true}, {"id": 19, "name": "Josh & John's Scoop Bus", "cuisine": "Artisan Mobile Ice Cream Bus", "area": "Tejon Street & Pikes Peak Plaza", "city": "Colorado Springs", "lat": 38.8339, "lon": -104.8214, "phone": "(719) 632-0299", "open": true}, {"id": 20, "name": "Luchal's Soulful Seafood", "cuisine": "Gourmet Seafood & Soul Food Truck", "area": "Platte Ave & Academy Blvd", "city": "Colorado Springs", "lat": 38.84, "lon": -104.75, "phone": "(719) 358-7014", "open": true}, {"id": 21, "name": "Springs Cupcake Truck", "cuisine": "Mobile Gourmet Bakery & Desserts", "area": "Downtown Colorado Springs / Acacia Park", "city": "Colorado Springs", "lat": 38.8375, "lon": -104.822, "phone": "(719) 473-1002", "open": true}, {"id": 22, "name": "Kona Ice of Canon City & Pueblo", "cuisine": "Shaved Ice & Refreshment Truck", "area": "Pueblo Riverwalk & Lake Pueblo", "city": "Pueblo", "lat": 38.27, "lon": -104.62, "phone": "(719) 275-5662", "open": true}];
+var map = L.map('map').setView([38.35, -104.7], 9);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 18, attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
+var markers = {};
+VENDORS.forEach(function (v) {
+  v.marker = L.marker([v.lat, v.lon]).addTo(map);
+  var phone = v.phone ? '<br><a href="tel:' + v.phone.replace(/[^0-9+]/g, '') + '">' + v.phone + '</a>' : '';
+  v.marker.bindPopup('<strong>' + v.name + '</strong><br>' + v.cuisine + '<br>' + v.area +
+    ' <span class="meta">(' + v.city + ')</span>' + phone);
+});
+var youMarker = null;
+function miles(a, b) {
+  var R = 3958.8, t = Math.PI / 180;
+  var dLat = (b[0] - a[0]) * t, dLon = (b[1] - a[1]) * t;
+  var h = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+          Math.cos(a[0] * t) * Math.cos(b[0] * t) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  return 2 * R * Math.asin(Math.sqrt(h));
+}
+function render(origin, label) {
+  var list = document.getElementById('list');
+  list.innerHTML = '';
+  var sorted = VENDORS.slice().sort(function (a, b) {
+    return miles(origin, [a.lat, a.lon]) - miles(origin, [b.lat, b.lon]);
+  });
+  sorted.forEach(function (v) {
+    var d = miles(origin, [v.lat, v.lon]);
+    var li = document.createElement('li');
+    li.innerHTML = '<span class="dist">' + d.toFixed(1) + ' mi</span>' +
+      '<span class="name">' + v.name + '</span>' + (v.open ? ' <span class="badge">open</span>' : '') +
+      '<div class="meta">' + v.cuisine + ' &middot; ' + v.area + (v.phone ? ' &middot; ' + v.phone : '') + '</div>';
+    li.style.cursor = 'pointer';
+    li.onclick = function () { map.setView([v.lat, v.lon], 13); v.marker.openPopup(); };
+    list.appendChild(li);
+  });
+  document.getElementById('where').textContent = 'Distances from ' + label + '.';
+}
+document.getElementById('origin').addEventListener('change', function (e) {
+  var p = e.target.value.split(',').map(Number);
+  render(p, e.target.options[e.target.selectedIndex].text.replace('from ', ''));
+});
+document.getElementById('locate').addEventListener('click', function () {
+  if (!navigator.geolocation) { document.getElementById('where').textContent = 'This browser will not share a location - pick an origin instead.'; return; }
+  navigator.geolocation.getCurrentPosition(function (pos) {
+    var p = [pos.coords.latitude, pos.coords.longitude];
+    if (youMarker) { map.removeLayer(youMarker); }
+    youMarker = L.circleMarker(p, { radius: 8, color: '#111827', fillColor: '#111827', fillOpacity: 1 }).addTo(map)
+      .bindPopup('You are here');
+    map.setView(p, 11);
+    render(p, 'your location (not stored, not sent anywhere)');
+  }, function () {
+    document.getElementById('where').textContent = 'Location permission denied - pick an origin instead.';
+  }, { timeout: 8000 });
+});
+render([38.2544, -104.6091], 'Downtown Pueblo');
+</script>
+</body>
+</html>
