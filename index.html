@@ -3,284 +3,421 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Where We Eatin'? — Find the food truck that's open near you</title>
-<meta name="description" content="Where We Eatin'? shows every open food truck within the radius you choose — 25 miles or nationwide. Live locations, star ratings, customer reviews and an earned HIGHLY RECOMMENDED badge.">
-<meta name="theme-color" content="#dc2626">
+<title>Where We Eatin'? — find Southern Colorado food trucks, live</title>
+<meta name="description" content="Track 9 food trucks across Colorado Springs and Pueblo: see who's live, how far they are from you, what they cook and how to call them. Free listings, 0% delivery markup.">
 <link rel="canonical" href="https://jjordanjr74-dot.github.io/whereeatin-site/">
+<meta name="theme-color" content="#d81f26">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Where We Eatin'?">
-<meta property="og:title" content="Where We Eatin'? — Find the food truck that's open near you">
-<meta property="og:description" content="Pick a radius. See every open food truck. Star ratings, real reviews, earned HIGHLY RECOMMENDED badge.">
+<meta property="og:title" content="Where We Eatin'? — Southern Colorado food trucks, live">
+<meta property="og:description" content="9 trucks tracked. Distances from you, vendor-reported locations, ratings that have to be earned.">
 <meta property="og:url" content="https://jjordanjr74-dot.github.io/whereeatin-site/">
-<meta property="og:image" content="https://jjordanjr74-dot.github.io/whereeatin-site/assets/truck-1.jpg">
+<meta property="og:image" content="https://jjordanjr74-dot.github.io/whereeatin-site/assets/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Where We Eatin'?">
-<meta name="twitter:description" content="Pick a radius. See every open food truck.">
-<meta name="twitter:image" content="https://jjordanjr74-dot.github.io/whereeatin-site/assets/truck-1.jpg">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;700&family=Playfair+Display+SC:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Where We Eatin'?",
-  "url": "https://jjordanjr74-dot.github.io/whereeatin-site/",
-  "applicationCategory": "TravelApplication",
-  "operatingSystem": "Web",
-  "description": "Radius-based discovery for food trucks: live locations, star ratings, customer reviews and an earned HIGHLY RECOMMENDED badge.",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free for diners. Truck listings from $15/month." }
-}
+{"@context":"https://schema.org","@graph":[
+ {"@type":"WebSite","name":"Where We Eatin'?","url":"https://jjordanjr74-dot.github.io/whereeatin-site/","inLanguage":"en-US",
+   "description":"Independent food-truck directory for Southern Colorado."},
+ {"@type":"ItemList","name":"Tracked food trucks","numberOfItems":9,
+   "itemListElement":[{"@type": "FoodEstablishment", "name": "Big Papa's Grill", "servesCuisine": "Gourmet Burgers & Smoked BBQ", "address": {"@type": "PostalAddress", "addressLocality": "Pueblo", "addressRegion": "CO", "addressCountry": "US"}, "telephone": "(719) 545-2272"}, {"@type": "FoodEstablishment", "name": "High Grade Catering & Food Truck", "servesCuisine": "Caribbean & Southern Fusion BBQ", "address": {"@type": "PostalAddress", "addressLocality": "Pueblo", "addressRegion": "CO", "addressCountry": "US"}, "telephone": "(719) 250-8819"}, {"@type": "FoodEstablishment", "name": "Josh & John's Scoop Bus", "servesCuisine": "Artisan Mobile Ice Cream Bus", "address": {"@type": "PostalAddress", "addressLocality": "Colorado Springs", "addressRegion": "CO", "addressCountry": "US"}, "telephone": "(719) 632-0299"}, {"@type": "FoodEstablishment", "name": "Kona Ice of Canon City & Pueblo", "servesCuisine": "Shaved Ice & Refreshment Truck", "address": {"@type": "PostalAddress", "addressLocality": "Pueblo", "addressRegion": "CO", "addressCountry": "US"}, "telephone": "(719) 275-5662"}, {"@type": "FoodEstablishment", "name": "Luchal's Soulful Seafood", "servesCuisine": "Gourmet Seafood & Soul Food Truck", "address": {"@type": "PostalAddress", "addressLocality": "Colorado Springs", "addressRegion": "CO", "addressCountry": "US"}, "telephone": "(719) 358-7014"}, {"@type": "FoodEstablishment", "name": "Mateo's Street Tacos", "servesCuisine": "Authentic Mexican Street Food", "address": {"@type": "PostalAddress", "addressLocality": "Pueblo", "addressRegion": "CO", "addressCountry": "US"}, "telephone": "(719) 561-1920"}, {"@type": "FoodEstablishment", "name": "Phat Frankie's BBQ", "servesCuisine": "Texas-Style Smoked Meats", "address": {"@type": "PostalAddress", "addressLocality": "Pueblo", "addressRegion": "CO", "addressCountry": "US"}, "telephone": "(719) 647-9100"}, {"@type": "FoodEstablishment", "name": "Sapo Guapo Tacos", "servesCuisine": "Gourmet Taco Trailer", "address": {"@type": "PostalAddress", "addressLocality": "Pueblo", "addressRegion": "CO", "addressCountry": "US"}, "telephone": "(719) 542-7276"}, {"@type": "FoodEstablishment", "name": "Springs Cupcake Truck", "servesCuisine": "Mobile Gourmet Bakery & Desserts", "address": {"@type": "PostalAddress", "addressLocality": "Colorado Springs", "addressRegion": "CO", "addressCountry": "US"}, "telephone": "(719) 473-1002"}]}]}
 </script>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#main" style="position:absolute;left:-9999px;top:0;background:#fff;padding:12px;z-index:99"
+   onfocus="this.style.left='12px'" onblur="this.style.left='-9999px'">Skip to content</a>
 
-<header class="nav" id="top">
+<header class="nav" id="nav">
   <div class="wrap nav-in">
-    <a class="brand" href="#top" aria-label="Where We Eatin'? home">
-      <svg viewBox="0 0 24 24" aria-hidden="true" class="brand-mark"><path d="M3 7h11v7H3zM14 9h4l3 3v2h-7z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="7" cy="17.5" r="1.9" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="17" cy="17.5" r="1.9" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>
-      <span class="brand-txt">Where We Eatin'<span class="q">?</span></span>
-    </a>
-    <nav class="nav-links" aria-label="Main">
-      <a href="#how">How it works</a>
-      <a href="#radius">Radius search</a>
-      <a href="#reviews">Ratings &amp; reviews</a>
-      <a href="#trucks">For trucks</a>
+    <a class="brand" href="./"><span class="brand-mark">WW</span> Where We Eatin'?</a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <nav class="nav-links" id="navLinks" aria-label="Main">
+      <a href="#trucks">Trucks</a>
+      <a href="radar/">Live radar</a>
+      <a href="reviews/">Reviews</a>
+      <a href="#vendors">For trucks</a>
       <a href="#faq">FAQ</a>
+      <a class="btn btn-primary btn-sm" href="https://t.me/HermesEbookBot?start=vendor">Get listed free</a>
     </nav>
-    <a class="btn btn-primary btn-nav" href="#demo">Open the radar</a>
   </div>
 </header>
 
 <main id="main">
-
-<section class="hero">
-  <img class="hero-img" src="assets/truck-1.jpg" alt="A food truck serving customers on a city street at dusk" width="1600" height="900" fetchpriority="high" decoding="async">
-  <div class="hero-scrim" aria-hidden="true"></div>
-  <div class="wrap hero-in">
-    <p class="eyebrow">Food trucks, found in seconds</p>
-    <h1>Find the food truck<br>before you find the parking&nbsp;lot.</h1>
-    <p class="lede">Pick a radius — a few miles, 150, or the whole country. Where We Eatin' shows every truck that is <strong>open right now</strong>, with real star ratings from real customers.</p>
-    <div class="cta-row">
-      <a class="btn btn-primary btn-lg" href="#demo">Open the live radar</a>
-      <a class="btn btn-ghost btn-lg" href="#trucks">List your truck</a>
-    </div>
-    <ul class="stat-strip" id="liveStats">
-      <li><span class="stat-n" data-live="vendors">9</span><span class="stat-l">trucks live now</span></li>
-      <li><span class="stat-n">1&ndash;3000</span><span class="stat-l">mile or km radius</span></li>
-      <li><span class="stat-n">5.0</span><span class="stat-l">max star rating</span></li>
-      <li><span class="stat-n">$0</span><span class="stat-l">for hungry people</span></li>
-    </ul>
-  </div>
-</section>
-
-<section class="band">
-  <div class="wrap">
-    <p class="band-txt"><strong>9 trucks live</strong> across Pueblo and Colorado Springs — and every one of them was added by a human, not a scraper.</p>
-  </div>
-</section>
-
-<section class="sec" id="how">
-  <div class="wrap">
-    <p class="eyebrow">How it works</p>
-    <h2>Three steps between you and lunch</h2>
-    <ol class="funnel">
-      <li>
-        <span class="step-n">1</span>
-        <h3>Set your radius</h3>
-        <p>Type a ZIP or a city, or just tap <em>Use my location</em>. Then choose how far you'll drive — in miles or kilometres.</p>
-      </li>
-      <li>
-        <span class="step-n">2</span>
-        <h3>See who's open now</h3>
-        <p>Every active truck inside your radius, drawn on the radar with its current spot, cuisine and open/closed status.</p>
-      </li>
-      <li>
-        <span class="step-n">3</span>
-        <h3>Go eat</h3>
-        <p>Check the stars, read what other customers said, then head straight there. Leave a review so the next person knows.</p>
-      </li>
-    </ol>
-  </div>
-</section>
-
-<section class="sec sec-alt" id="radius">
-  <div class="wrap grid-2">
-    <div>
-      <p class="eyebrow">The feature everyone asks for</p>
-      <h2>Search by radius, not by luck</h2>
-      <p>Most directories only show you what is nearby. We let you decide what <em>nearby</em> means — one control, from a single mile to nationwide, in miles or kilometres.</p>
-      <ul class="ticks">
-        <li><strong>25 / 50 / 150 mi / 500 / Nationwide</strong> — quick chips, one tap each.</li>
-        <li><strong>Try "Use my location"</strong> — your browser coarsens the pin before it is used.</li>
-        <li><strong>Honest zeros.</strong> Search Beverly Hills at 150 miles and we tell you there are no trucks. We never pad results to look busy.</li>
-      </ul>
-    </div>
-    <div class="shot">
-      <img src="assets/tacos-1.jpg" alt="Tacos being served from a food truck window" width="1200" height="800" loading="lazy" decoding="async">
-      <div class="shot-card">
-        <div class="row">
-          <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16.5 16.5 21 21" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
-          <span class="pill-open">9 open</span>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Southern Colorado · 9 trucks tracked</p>
+        <h1>Find the truck<br>before you're <em>hungry.</em></h1>
+        <p class="lead">Who's serving right now, how far they are from you, what they cook and how to call
+        them — on a map, not a guess. Free for every truck, and we take <strong>0%</strong> of what you spend
+        with them.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="radar/">Open the live radar →</a>
+          <a class="btn btn-ghost" href="#trucks">See every truck</a>
         </div>
-        <label class="mini-label" for="demoRadius">Radius</label>
-        <div class="row mini-row">
-          <input id="demoRadius" class="mini-num" type="number" value="150" min="1" max="3000" inputmode="numeric" readonly>
-          <span class="mini-unit">mi</span>
-          <span class="mini-q">Pueblo, CO 81003</span>
+        <p class="hero-note"><span class="dot" aria-hidden="true"></span>
+        9 trucks across Colorado Springs and Pueblo · locations update the minute a vendor pings us</p>
+      </div>
+      <figure class="shot">
+        <img src="assets/hero-2.jpg" alt="Food trucks lined up at a street food festival" width="1024" height="768" fetchpriority="high">
+        <span class="shot-badge"><span class="dot" aria-hidden="true"></span> 0% markup on every order</span>
+        <figcaption>Street food, still run by the people who cook it. Photo: Geoff Peters 604 (CC BY)</figcaption>
+      </figure>
+    </div>
+    <div class="wrap">
+      <div class="stats">
+        <div class="stat reveal"><b>9</b><span>trucks tracked and listed free</span></div>
+        <div class="stat reveal"><b>2</b><span>cities: Colorado Springs and Pueblo</span></div>
+        <div class="stat reveal"><b>45</b><span>menu items with vendor-stated prices</span></div>
+        <div class="stat reveal"><b>0%</b><span>delivery markup — you pay the truck, not us</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec tight" id="how">
+    <div class="wrap">
+      <p class="eyebrow">Three steps between you and lunch</p>
+      <h2>A truck, a map, and a phone number.</h2>
+      <p class="lead" style="margin-bottom:28px">No app to install, no account to make, no delivery fee added
+      behind your back. This is a directory with a live map — nothing more, on purpose.</p>
+      <div class="steps">
+        <div class="step reveal"><h3>See who's live right now</h3>
+        <p class="muted">The radar sorts every truck by how far it is from you and shows whether the vendor
+        reported that spot themselves or it's just their usual patch.</p></div>
+        <div class="step reveal"><h3>Call or walk up</h3>
+        <p class="muted">Tap to call, or tap the truck for its area. No ordering app in between, which is why
+        there's no markup and no per-order fee.</p></div>
+        <div class="step reveal"><h3>Rate them after you eat</h3>
+        <p class="muted">One message, real stars. Those reviews are the only thing that can earn a truck the
+        HIGHLY RECOMMENDED badge — and the only thing that can lose it.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="trucks" style="background:var(--paper-2)">
+    <div class="wrap">
+      <p class="eyebrow">The roster</p>
+      <h2>Every truck we track, 2026-09-19.</h2>
+      <p class="lead" style="margin-bottom:30px">Nine trucks across Colorado Springs and Pueblo, one list that doesn't sell position.
+      Ratings show as zero until a real customer leaves one — we don't seed them.</p>
+      <div class="vendors">
+      <article class="vendor reveal">
+        <div class="vendor-media">
+          <img src="assets/burger-1.jpg" alt="Big Papa&#x27;s Grill — Gourmet Burgers &amp; Smoked BBQ" loading="lazy" width="1024" height="640">
+          <div class="vendor-pins"><span class="pin">usual spot</span></div>
+        </div>
+        <div class="vendor-body">
+          <h3>Big Papa&#x27;s Grill</h3>
+          <p class="vendor-meta">Gourmet Burgers &amp; Smoked BBQ · Pueblo</p>
+          <p class="small muted" style="margin:0">Downtown Pueblo &amp; Riverwalk</p>
+          <p class="rating"><span class="none">No reviews yet — be the first</span></p>
+          <div class="vendor-foot">
+            <a class="btn btn-ghost btn-sm" href="tel:7195452272">Call (719) 545-2272</a>
+            <a class="btn btn-sm btn-ghost" href="radar/">See it on the radar</a>
+          </div>
+        </div>
+      </article>
+      <article class="vendor reveal">
+        <div class="vendor-media">
+          <img src="assets/bbq-1.jpg" alt="High Grade Catering &amp; Food Truck — Caribbean &amp; Southern Fusion BBQ" loading="lazy" width="1024" height="640">
+          <div class="vendor-pins"><span class="pin">usual spot</span></div>
+        </div>
+        <div class="vendor-body">
+          <h3>High Grade Catering &amp; Food Truck</h3>
+          <p class="vendor-meta">Caribbean &amp; Southern Fusion BBQ · Pueblo</p>
+          <p class="small muted" style="margin:0">Pueblo City Park Events</p>
+          <p class="rating"><span class="none">No reviews yet — be the first</span></p>
+          <div class="vendor-foot">
+            <a class="btn btn-ghost btn-sm" href="tel:7192508819">Call (719) 250-8819</a>
+            <a class="btn btn-sm btn-ghost" href="radar/">See it on the radar</a>
+          </div>
+        </div>
+      </article>
+      <article class="vendor reveal">
+        <div class="vendor-media">
+          <img src="assets/icecream-1.jpg" alt="Josh &amp; John&#x27;s Scoop Bus — Artisan Mobile Ice Cream Bus" loading="lazy" width="1024" height="640">
+          <div class="vendor-pins"><span class="pin">usual spot</span></div>
+        </div>
+        <div class="vendor-body">
+          <h3>Josh &amp; John&#x27;s Scoop Bus</h3>
+          <p class="vendor-meta">Artisan Mobile Ice Cream Bus · Colorado Springs</p>
+          <p class="small muted" style="margin:0">Tejon Street &amp; Pikes Peak Plaza</p>
+          <p class="rating"><span class="none">No reviews yet — be the first</span></p>
+          <div class="vendor-foot">
+            <a class="btn btn-ghost btn-sm" href="tel:7196320299">Call (719) 632-0299</a>
+            <a class="btn btn-sm btn-ghost" href="radar/">See it on the radar</a>
+          </div>
+        </div>
+      </article>
+      <article class="vendor reveal">
+        <div class="vendor-media">
+          <img src="assets/ice-2.jpg" alt="Kona Ice of Canon City &amp; Pueblo — Shaved Ice &amp; Refreshment Truck" loading="lazy" width="1024" height="640">
+          <div class="vendor-pins"><span class="pin">usual spot</span></div>
+        </div>
+        <div class="vendor-body">
+          <h3>Kona Ice of Canon City &amp; Pueblo</h3>
+          <p class="vendor-meta">Shaved Ice &amp; Refreshment Truck · Pueblo</p>
+          <p class="small muted" style="margin:0">Pueblo Riverwalk &amp; Lake Pueblo</p>
+          <p class="rating"><span class="none">No reviews yet — be the first</span></p>
+          <div class="vendor-foot">
+            <a class="btn btn-ghost btn-sm" href="tel:7192755662">Call (719) 275-5662</a>
+            <a class="btn btn-sm btn-ghost" href="radar/">See it on the radar</a>
+          </div>
+        </div>
+      </article>
+      <article class="vendor reveal">
+        <div class="vendor-media">
+          <img src="assets/seafood-1.jpg" alt="Luchal&#x27;s Soulful Seafood — Gourmet Seafood &amp; Soul Food Truck" loading="lazy" width="1024" height="640">
+          <div class="vendor-pins"><span class="pin">usual spot</span></div>
+        </div>
+        <div class="vendor-body">
+          <h3>Luchal&#x27;s Soulful Seafood</h3>
+          <p class="vendor-meta">Gourmet Seafood &amp; Soul Food Truck · Colorado Springs</p>
+          <p class="small muted" style="margin:0">Platte Ave &amp; Academy Blvd</p>
+          <p class="rating"><span class="none">No reviews yet — be the first</span></p>
+          <div class="vendor-foot">
+            <a class="btn btn-ghost btn-sm" href="tel:7193587014">Call (719) 358-7014</a>
+            <a class="btn btn-sm btn-ghost" href="radar/">See it on the radar</a>
+          </div>
+        </div>
+      </article>
+      <article class="vendor reveal">
+        <div class="vendor-media">
+          <img src="assets/tacos-2.jpg" alt="Mateo&#x27;s Street Tacos — Authentic Mexican Street Food" loading="lazy" width="1024" height="640">
+          <div class="vendor-pins"><span class="pin">usual spot</span></div>
+        </div>
+        <div class="vendor-body">
+          <h3>Mateo&#x27;s Street Tacos</h3>
+          <p class="vendor-meta">Authentic Mexican Street Food · Pueblo</p>
+          <p class="small muted" style="margin:0">Northern Ave &amp; Pueblo Blvd</p>
+          <p class="rating"><span class="none">No reviews yet — be the first</span></p>
+          <div class="vendor-foot">
+            <a class="btn btn-ghost btn-sm" href="tel:7195611920">Call (719) 561-1920</a>
+            <a class="btn btn-sm btn-ghost" href="radar/">See it on the radar</a>
+          </div>
+        </div>
+      </article>
+      <article class="vendor reveal">
+        <div class="vendor-media">
+          <img src="assets/truck-2.jpg" alt="Phat Frankie&#x27;s BBQ — Texas-Style Smoked Meats" loading="lazy" width="1024" height="640">
+          <div class="vendor-pins"><span class="pin">usual spot</span></div>
+        </div>
+        <div class="vendor-body">
+          <h3>Phat Frankie&#x27;s BBQ</h3>
+          <p class="vendor-meta">Texas-Style Smoked Meats · Pueblo</p>
+          <p class="small muted" style="margin:0">Pueblo West / McCulloch Blvd</p>
+          <p class="rating"><span class="none">No reviews yet — be the first</span></p>
+          <div class="vendor-foot">
+            <a class="btn btn-ghost btn-sm" href="tel:7196479100">Call (719) 647-9100</a>
+            <a class="btn btn-sm btn-ghost" href="radar/">See it on the radar</a>
+          </div>
+        </div>
+      </article>
+      <article class="vendor reveal">
+        <div class="vendor-media">
+          <img src="assets/tacos-1.jpg" alt="Sapo Guapo Tacos — Gourmet Taco Trailer" loading="lazy" width="1024" height="640">
+          <div class="vendor-pins"><span class="pin">usual spot</span></div>
+        </div>
+        <div class="vendor-body">
+          <h3>Sapo Guapo Tacos</h3>
+          <p class="vendor-meta">Gourmet Taco Trailer · Pueblo</p>
+          <p class="small muted" style="margin:0">Union Ave Historic District</p>
+          <p class="rating"><span class="none">No reviews yet — be the first</span></p>
+          <div class="vendor-foot">
+            <a class="btn btn-ghost btn-sm" href="tel:7195427276">Call (719) 542-7276</a>
+            <a class="btn btn-sm btn-ghost" href="radar/">See it on the radar</a>
+          </div>
+        </div>
+      </article>
+      <article class="vendor reveal">
+        <div class="vendor-media">
+          <img src="assets/cupcake-1.jpg" alt="Springs Cupcake Truck — Mobile Gourmet Bakery &amp; Desserts" loading="lazy" width="1024" height="640">
+          <div class="vendor-pins"><span class="pin">usual spot</span></div>
+        </div>
+        <div class="vendor-body">
+          <h3>Springs Cupcake Truck</h3>
+          <p class="vendor-meta">Mobile Gourmet Bakery &amp; Desserts · Colorado Springs</p>
+          <p class="small muted" style="margin:0">Downtown Colorado Springs / Acacia Park</p>
+          <p class="rating"><span class="none">No reviews yet — be the first</span></p>
+          <div class="vendor-foot">
+            <a class="btn btn-ghost btn-sm" href="tel:7194731002">Call (719) 473-1002</a>
+            <a class="btn btn-sm btn-ghost" href="radar/">See it on the radar</a>
+          </div>
+        </div>
+      </article>
+      </div>
+      <p class="small muted" style="margin-top:26px">Prices and spots are stated by each vendor and updated
+      from their own messages. Photos are Creative Commons licensed (credited in the footer) and show the
+      kind of food each truck makes — ask any truck for its own photos and we'll swap them in.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="reviews">
+    <div class="wrap">
+      <p class="eyebrow">Ratings, comments, one badge that matters</p>
+      <h2>Reviews humans write. A badge trucks earn.</h2>
+      <p class="lead" style="margin-bottom:26px">Zero reviews so far — and that number is the honest one.
+      A review is one message: <em>“5 Big Papa's Grill — best brisket in Pueblo”</em>.</p>
+      <div class="reviews-grid">
+      <div class="rule reveal">
+        <p style="margin:0 0 8px"><strong>Nothing here is seeded, bought, or written by us — which is why this
+        page now says zero.</strong> The first review comes from a real customer message.</p>
+        <p style="margin:0" class="small"><strong>Earned, never sold:</strong> HIGHLY RECOMMENDED needs at least
+        3 reviews, an average of 4.5+ and no review below 3 stars in the last
+        90 days. It is recalculated on every review, so it can be lost. One review per truck per
+        12 hours per person; only a first name and last initial are stored.</p>
+      </div>
+      <div class="review reveal">
+        <q>Reviews are the whole point of a food truck. If I can't see who's worth the walk, I'm guessing.</q>
+        <cite>— what customers told us, and why this section exists</cite>
+      </div>
+      </div>
+      <p style="margin-top:26px"><a class="btn btn-primary" href="https://t.me/HermesEbookBot?start=review">Leave a review →</a>
+      <a class="btn btn-ghost" href="reviews/" style="margin-left:10px">See all ratings</a></p>
+    </div>
+  </section>
+
+  <section class="sec" id="vendors" style="background:var(--paper-2)">
+    <div class="wrap">
+      <p class="eyebrow">For food trucks</p>
+      <h2>Get found by people who are already hungry.</h2>
+      <p class="lead" style="margin-bottom:30px">We charge nothing to list a truck, and nothing per order.
+      A listing is a page with your food, your phone number, your usual spots and a pin that moves when you
+      tell us you've moved.</p>
+      <div class="tiers">
+        <div class="tier reveal">
+          <h3>Free listing</h3>
+          <div class="price">$0 <small>forever</small></div>
+          <ul>
+            <li>Your truck on the radar and in the roster</li>
+            <li>Menu, phone, usual spots, weekly schedule</li>
+            <li>Vendor-reported live pin — you message, it moves</li>
+            <li>Ratings and reviews from real customers</li>
+          </ul>
+          <a class="btn btn-primary" href="https://t.me/HermesEbookBot?start=vendor">Start a free listing →</a>
+        </div>
+        <div class="tier reveal">
+          <h3>Standard</h3>
+          <div class="price">$15 <small>/ month, cancel any time</small></div>
+          <ul>
+            <li>Full listing page you can point customers at</li>
+            <li>Your menu and prices kept current</li>
+            <li>Weekly spot in our social posts</li>
+            <li>Still no commission on any order</li>
+          </ul>
+          <a class="btn btn-ghost" href="https://t.me/HermesEbookBot?start=vendor">Ask about standard →</a>
+        </div>
+        <div class="tier featured reveal">
+          <span class="ribbon">Most trucks pick this</span>
+          <h3>Featured</h3>
+          <div class="price">$35 <small>/ month, cancel any time</small></div>
+          <ul>
+            <li>Top of the roster and first in radius results</li>
+            <li>Full-size photo and your story on the page</li>
+            <li>Priority in event and catering matching</li>
+            <li>Still no commission on any order</li>
+          </ul>
+          <a class="btn btn-ghost" href="https://t.me/HermesEbookBot?start=vendor">Ask about featured →</a>
+        </div>
+      </div>
+      <p class="small muted" style="margin-top:20px">Catering and events: a <strong>$250 booking deposit</strong>
+      holds the date and is credited to the final bill — ask us and we'll match the headcount to the right trucks.</p>
+      <p class="small muted" style="margin-top:22px">Featured is the only thing we sell. The badge is not
+      for sale at any price — it comes from reviews or it doesn't come.</p>
+    </div>
+  </section>
+
+  <section class="sec faq" id="faq">
+    <div class="wrap">
+      <p class="eyebrow">The honest answers</p>
+      <h2>Questions people actually ask.</h2>
+      <div style="margin-top:22px">
+        <details open><summary>Do you take a cut of what I spend at the truck?</summary>
+        <p>No. There is no ordering, no delivery and no card processing here — you pay the truck directly,
+        which is why everything costs what the truck charges.</p></details>
+        <details><summary>How do you know where a truck is right now?</summary>
+        <p>Vendors send their spot to our listing desk and the pin moves within minutes; those trucks are
+        labelled “vendor reported”. Any other truck is marked “usual spot”, which means exactly that — their
+        normal patch, not a live position. We don't pretend otherwise.</p></details>
+        <details><summary>Does it cost a truck anything to be listed?</summary>
+        <p>No. Listing is free forever and includes the radar pin, menu, phone number and reviews. The only
+        paid option is Featured at $35/month, and it has no effect on ratings.</p></details>
+        <details><summary>Can a truck buy the HIGHLY RECOMMENDED badge?</summary>
+        <p>No. It requires 3+ reviews, a 4.5+ average and no review below 3 stars in the last
+        90 days. It recalculates on every review, so it can be lost as well as earned.</p></details>
+        <details><summary>Who are you?</summary>
+        <p>An independent local directory started in Pueblo, not a franchise, not a delivery app. If we
+        can't prove something on this site with a real number, we say so — including that we have
+        0 reviews and 9 trucks so far.</p></details>
+        <details><summary>I'm a truck and I want in. What do I send?</summary>
+        <p>One message: truck name, what you cook, phone number, where you usually park and which days. We
+        send back a page to approve before anything appears publicly.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec tight">
+    <div class="wrap">
+      <div class="banner reveal">
+        <div>
+          <h2>Hungry now? The radar is already open.</h2>
+          <p>Sorted by distance from you, with a call button on every truck.</p>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-primary" href="radar/">Open the radar →</a>
+          <a class="btn btn-ghost" href="https://t.me/HermesEbookBot?start=vendor">List a truck</a>
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="sec" id="reviews">
-  <div class="wrap">
-    <p class="eyebrow">Ratings, comments and one badge that matters</p>
-    <h2>Reviews humans write. A badge trucks earn.</h2>
-    <div class="cards">
-      <article class="card">
-        <svg viewBox="0 0 24 24" aria-hidden="true" class="ico ico-lg"><path d="m12 3.6 2.6 5.4 5.9.8-4.3 4.1 1.1 5.9L12 17l-5.3 2.8 1.1-5.9L3.5 9.8l5.9-.8z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
-        <h3>Five-star ratings</h3>
-        <p>One message to the listing desk &mdash; no account, no app install. The truck's average updates the moment your review lands.</p>
-      </article>
-      <article class="card">
-        <svg viewBox="0 0 24 24" aria-hidden="true" class="ico ico-lg"><path d="M21 12a8 8 0 0 1-8 8H8l-5 3 1.4-4.6A8 8 0 1 1 21 12z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
-        <h3>Customer comments</h3>
-        <p>Tell the next customer what was good, what was slow, and what to order. One review per truck per 12 hours keeps it fair.</p>
-      </article>
-      <article class="card card-hr">
-        <svg viewBox="0 0 24 24" aria-hidden="true" class="ico ico-lg"><path d="M12 2.5 14.6 8l6 .9-4.3 4.2 1 6-5.3-2.9-5.3 2.9 1-6L3.4 8.9l6-.9z" fill="currentColor" opacity=".18"/><path d="m12 2.5 2.6 5.5 6 .9-4.3 4.2 1 6L12 16.2l-5.3 2.9 1-6-4.3-4.2 6-.9z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m9.4 12.8 2 2 3.6-4.1" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <h3>HIGHLY RECOMMENDED <span class="badge-hr">earned</span></h3>
-        <p>Earned at 3+ recommendations and a 4.5+ average — and it can be taken away if the reviews stop supporting it. It is not for sale. Ever.</p>
-      </article>
-    <p class="cta-row"><a class="btn" href="reviews/">Read every review &rarr;</a> <a class="btn" href="https://t.me/HermesEbookBot?start=review">Leave a review &rarr;</a></p>
-  </div>
-  </div>
-</section>
-
-<section class="sec sec-alt" id="demo">
-  <div class="wrap demo-wrap">
-    <div class="demo-copy">
-      <p class="eyebrow">See it working</p>
-      <h2>See who's live right now</h2>
-      <p>The list below is the real roster &mdash; every truck on it is one we have spoken to, with the
-      location they park at. The interactive map view runs on a private machine and is not published
-      while our public ingress stays closed, so this page shows the same information in a form that
-      cannot go stale or leak anything.</p>
-      <p class="demo-actions">
-        <a class="btn btn-primary btn-lg" id="demoLink" href="#on-the-radar">
-          See who's live right now
-        </a>
-        <span class="note" id="demoNote">Live roster &middot; updated from our own vendor records</span>
-      </p>
-      <p class="fine">No countdowns, no fake scarcity: if a truck is not open, it is not on this list.</p>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="trucks">
-  <div class="wrap">
-    <p class="eyebrow">For trucks</p>
-    <h2>Get found by people who are already hungry</h2>
-    <p class="sec-lede">Listing takes minutes and costs less than one lunch service. You control your location, your hours and your photos.</p>
-    <div class="price-grid">
-      <article class="price">
-        <h3>Standard listing</h3>
-        <p class="price-n">$15<span>/month</span></p>
-        <ul class="ticks">
-          <li>Appear in every radius search you fall inside</li>
-          <li>Live location and open/closed status</li>
-          <li>Star ratings and customer comments</li>
-          <li>HIGHLY RECOMMENDED badge when you earn it</li>
-        </ul>
-      </article>
-      <article class="price price-alt">
-        <h3>Catering concierge</h3>
-        <p class="price-n">$250<span> one-off</span></p>
-        <ul class="ticks">
-          <li>Event inquiry handled end to end</li>
-          <li>We confirm the date, the headcount and the deposit</li>
-          <li>You show up to a booked job</li>
-        </ul>
-      </article>
-    </div>
-    <p class="fine">Payments are processed by Stripe. We never see or store your card number.</p>
-  </div>
-</section>
-
-<section class="sec sec-alt" id="faq">
-  <div class="wrap">
-    <p class="eyebrow">Questions</p>
-    <h2>The honest answers</h2>
-    <div class="faq">
-      <details open>
-        <summary>Can a truck buy a five-star rating or the HIGHLY RECOMMENDED badge?</summary>
-        <p>No. The badge is computed from the reviews: at least three recommendations and a 4.5 average or better. Drop below either line and it disappears. Nothing in the product is for sale except a listing and the catering service.</p>
-      </details>
-      <details>
-        <summary>How far can I search?</summary>
-        <p>Anywhere from one mile to 3,000, in miles or kilometres — or switch to Nationwide and see every active truck at once. The default is 150 miles, which covers Pueblo, Colorado Springs and the towns between them.</p>
-      </details>
-      <details>
-        <summary>Why do I sometimes get zero results?</summary>
-        <p>Because there genuinely are no active trucks inside the radius you chose. We would rather show you an empty map than invent a result. Widen the radius or switch to Nationwide.</p>
-      </details>
-      <details>
-        <summary>What do you do with my location?</summary>
-        <p>It is used to centre the search and nothing else. If you use the <em>Use my location</em> button your browser coarsens the coordinates before they are sent. Reviews are rate-limited on a one-way hash of the connection — we do not store raw IP addresses.</p>
-      </details>
-      <details>
-        <summary>Is this available outside Colorado?</summary>
-        <p>Colorado is where the trucks are today. The radius engine itself is nationwide by design, so as listings arrive in new cities they simply show up in the results.</p>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- vendors:start -->
-<section id="on-the-radar" class="trucks">
-  <h2>On the radar right now</h2>
-  <p class="count">9 trucks tracked across Pueblo and Colorado Springs &mdash; live locations, direct vendor contact, 0% delivery markups.</p>
-  <ul class="truck-list">
-    <li><strong>Big Papa&#x27;s Grill</strong> &mdash; Gourmet Burgers &amp; Smoked BBQ <span class="badge">Bounce Club</span><br><span class="loc">Downtown Pueblo &amp; Riverwalk</span> &middot; <span class="meta">prices reported, not verified</span></li>
-    <li><strong>Mateo&#x27;s Street Tacos</strong> &mdash; Authentic Mexican Street Food<br><span class="loc">Northern Ave &amp; Pueblo Blvd</span> &middot; <span class="meta">prices reported, not verified</span></li>
-    <li><strong>High Grade Catering &amp; Food Truck</strong> &mdash; Caribbean &amp; Southern Fusion BBQ <span class="badge">Bounce Club</span><br><span class="loc">Pueblo City Park Events</span> &middot; <span class="meta">prices reported, not verified</span></li>
-    <li><strong>Sapo Guapo Tacos</strong> &mdash; Gourmet Taco Trailer<br><span class="loc">Union Ave Historic District</span> &middot; <span class="meta">prices reported, not verified</span></li>
-    <li><strong>Phat Frankie&#x27;s BBQ</strong> &mdash; Texas-Style Smoked Meats <span class="badge">Bounce Club</span><br><span class="loc">Pueblo West / McCulloch Blvd</span> &middot; <span class="meta">prices reported, not verified</span></li>
-    <li><strong>Josh &amp; John&#x27;s Scoop Bus</strong> &mdash; Artisan Mobile Ice Cream Bus<br><span class="loc">Tejon Street &amp; Pikes Peak Plaza</span> &middot; <span class="meta">prices reported, not verified</span></li>
-    <li><strong>Luchal&#x27;s Soulful Seafood</strong> &mdash; Gourmet Seafood &amp; Soul Food Truck <span class="badge">Bounce Club</span><br><span class="loc">Platte Ave &amp; Academy Blvd</span> &middot; <span class="meta">prices reported, not verified</span></li>
-    <li><strong>Springs Cupcake Truck</strong> &mdash; Mobile Gourmet Bakery &amp; Desserts<br><span class="loc">Downtown Colorado Springs / Acacia Park</span> &middot; <span class="meta">prices reported, not verified</span></li>
-    <li><strong>Kona Ice of Canon City &amp; Pueblo</strong> &mdash; Shaved Ice &amp; Refreshment Truck <span class="badge">Bounce Club</span><br><span class="loc">Pueblo Riverwalk &amp; Lake Pueblo</span> &middot; <span class="meta">prices reported, not verified</span></li>
-  </ul>
-  <p class="note">Listings are the vendors' own information. Prices marked &ldquo;reported&rdquo; have not been confirmed by the vendor yet.</p>
-</section>
-<!-- vendors:end -->
+  </section>
 </main>
 
 <footer class="foot">
-  <div class="wrap foot-in">
-    <div>
-      <p class="foot-brand">Where We Eatin'<span class="q">?</span></p>
-      <p class="foot-note">Radius-based food truck discovery. Built in Colorado.</p>
-    </div>
-    <nav class="foot-links" aria-label="Footer">
-      <a href="#how">How it works</a>
-      <a href="#trucks">For trucks</a>
-      <a href="#faq">FAQ</a>
-      <a href="radar/">Live radar</a>
-      <a href="reviews/">Reviews</a>
-      <a href="#demo">Live demo</a>
-      <a href="radar/">Live radar</a>
-      <a href="list-your-truck/">List your truck</a>
-      <a href="privacy/">Privacy</a>
-    </nav>
-  </div>
   <div class="wrap">
-    <p class="credits" id="photoCredits">Photography: licensed images from Openverse contributors — see <a href="assets/credits.json">credits.json</a> for each file, author and licence. Where We Eatin'? is an independent directory and is not affiliated with any truck listed.</p>
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="./" style="margin-bottom:12px"><span class="brand-mark">WW</span> Where We Eatin'?</a>
+        <p class="small muted" style="margin-top:12px;max-width:34ch">Independent food-truck directory for
+        Pueblo, Pueblo West, Colorado Springs and Cañon City. Free listings, no commission, no app.</p>
+      </div>
+      <div>
+        <h4>Find food</h4>
+        <ul>
+          <li><a href="radar/">Live radar</a></li>
+          <li><a href="#trucks">All 9 trucks</a></li>
+          <li><a href="reviews/">Reviews &amp; ratings</a></li>
+          <li><a href="list-your-truck/">Get your truck listed</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For trucks</h4>
+        <ul>
+          <li><a href="#vendors">Pricing</a></li>
+          <li><a href="https://t.me/HermesEbookBot?start=vendor">Listing desk (Telegram)</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="privacy/">Privacy policy</a></li>
+          <li><a href="sitemap.xml">Sitemap</a></li>
+          <li><a href="#faq">How the badge works</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <span>© <span id="year">2026</span> Where We Eatin'? · Built and updated 2026-09-19 from our own vendor records.</span>
+      <span>Listing desk: <a href="https://t.me/HermesEbookBot?start=vendor">Telegram</a> — no phone line yet, by design while we start up.</span>
+    </div>
+    <p class="small muted" style="margin:14px 0 0">Photos: Creative Commons (BY / BY-SA) via Flickr —
+    Geoff Peters 604, Phil Denton, ricardodiaz11 and others; full credits in <a href="assets/credits.json">credits.json</a>.
+    Truck facts, prices and locations come from each vendor; ratings come from customer reviews.</p>
   </div>
 </footer>
 
