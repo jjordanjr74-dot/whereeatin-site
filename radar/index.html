@@ -60,7 +60,7 @@
 </div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-var VENDORS = [{"id": 14, "name": "Big Papa's Grill", "cuisine": "Gourmet Burgers & Smoked BBQ", "area": "Downtown Pueblo & Riverwalk", "city": "Pueblo", "lat": 38.2544, "lon": -104.6091, "phone": "(719) 545-2272", "open": true}, {"id": 15, "name": "Mateo's Street Tacos", "cuisine": "Authentic Mexican Street Food", "area": "Northern Ave & Pueblo Blvd", "city": "Pueblo", "lat": 38.235, "lon": -104.64, "phone": "(719) 561-1920", "open": true}, {"id": 16, "name": "High Grade Catering & Food Truck", "cuisine": "Caribbean & Southern Fusion BBQ", "area": "Pueblo City Park Events", "city": "Pueblo", "lat": 38.28, "lon": -104.63, "phone": "(719) 250-8819", "open": true}, {"id": 17, "name": "Sapo Guapo Tacos", "cuisine": "Gourmet Taco Trailer", "area": "Union Ave Historic District", "city": "Pueblo", "lat": 38.2612, "lon": -104.615, "phone": "(719) 542-7276", "open": true}, {"id": 18, "name": "Phat Frankie's BBQ", "cuisine": "Texas-Style Smoked Meats", "area": "Pueblo West / McCulloch Blvd", "city": "Pueblo", "lat": 38.3512, "lon": -104.72, "phone": "(719) 647-9100", "open": true}, {"id": 19, "name": "Josh & John's Scoop Bus", "cuisine": "Artisan Mobile Ice Cream Bus", "area": "Tejon Street & Pikes Peak Plaza", "city": "Colorado Springs", "lat": 38.8339, "lon": -104.8214, "phone": "(719) 632-0299", "open": true}, {"id": 20, "name": "Luchal's Soulful Seafood", "cuisine": "Gourmet Seafood & Soul Food Truck", "area": "Platte Ave & Academy Blvd", "city": "Colorado Springs", "lat": 38.84, "lon": -104.75, "phone": "(719) 358-7014", "open": true}, {"id": 21, "name": "Springs Cupcake Truck", "cuisine": "Mobile Gourmet Bakery & Desserts", "area": "Downtown Colorado Springs / Acacia Park", "city": "Colorado Springs", "lat": 38.8375, "lon": -104.822, "phone": "(719) 473-1002", "open": true}, {"id": 22, "name": "Kona Ice of Canon City & Pueblo", "cuisine": "Shaved Ice & Refreshment Truck", "area": "Pueblo Riverwalk & Lake Pueblo", "city": "Pueblo", "lat": 38.27, "lon": -104.62, "phone": "(719) 275-5662", "open": true}];
+var VENDORS = [{"id": 14, "name": "Big Papa's Grill", "cuisine": "Gourmet Burgers & Smoked BBQ", "area": "Downtown Pueblo & Riverwalk", "city": "Pueblo", "lat": 38.2544, "lon": -104.6091, "phone": "(719) 545-2272", "open": true, "reported": null, "source": null}, {"id": 15, "name": "Mateo's Street Tacos", "cuisine": "Authentic Mexican Street Food", "area": "Northern Ave & Pueblo Blvd", "city": "Pueblo", "lat": 38.235, "lon": -104.64, "phone": "(719) 561-1920", "open": true, "reported": null, "source": null}, {"id": 16, "name": "High Grade Catering & Food Truck", "cuisine": "Caribbean & Southern Fusion BBQ", "area": "Pueblo City Park Events", "city": "Pueblo", "lat": 38.28, "lon": -104.63, "phone": "(719) 250-8819", "open": true, "reported": null, "source": null}, {"id": 17, "name": "Sapo Guapo Tacos", "cuisine": "Gourmet Taco Trailer", "area": "Union Ave Historic District", "city": "Pueblo", "lat": 38.2612, "lon": -104.615, "phone": "(719) 542-7276", "open": true, "reported": null, "source": null}, {"id": 18, "name": "Phat Frankie's BBQ", "cuisine": "Texas-Style Smoked Meats", "area": "Pueblo West / McCulloch Blvd", "city": "Pueblo", "lat": 38.3512, "lon": -104.72, "phone": "(719) 647-9100", "open": true, "reported": null, "source": null}, {"id": 19, "name": "Josh & John's Scoop Bus", "cuisine": "Artisan Mobile Ice Cream Bus", "area": "Tejon Street & Pikes Peak Plaza", "city": "Colorado Springs", "lat": 38.8339, "lon": -104.8214, "phone": "(719) 632-0299", "open": true, "reported": null, "source": null}, {"id": 20, "name": "Luchal's Soulful Seafood", "cuisine": "Gourmet Seafood & Soul Food Truck", "area": "Platte Ave & Academy Blvd", "city": "Colorado Springs", "lat": 38.84, "lon": -104.75, "phone": "(719) 358-7014", "open": true, "reported": null, "source": null}, {"id": 21, "name": "Springs Cupcake Truck", "cuisine": "Mobile Gourmet Bakery & Desserts", "area": "Downtown Colorado Springs / Acacia Park", "city": "Colorado Springs", "lat": 38.8375, "lon": -104.822, "phone": "(719) 473-1002", "open": true, "reported": null, "source": null}, {"id": 22, "name": "Kona Ice of Canon City & Pueblo", "cuisine": "Shaved Ice & Refreshment Truck", "area": "Pueblo Riverwalk & Lake Pueblo", "city": "Pueblo", "lat": 38.27, "lon": -104.62, "phone": "(719) 275-5662", "open": true, "reported": null, "source": null}];
 var map = L.map('map').setView([38.35, -104.7], 9);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 18, attribution: '&copy; OpenStreetMap contributors'
@@ -80,6 +80,16 @@ function miles(a, b) {
           Math.cos(a[0] * t) * Math.cos(b[0] * t) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
   return 2 * R * Math.asin(Math.sqrt(h));
 }
+function timeAgo(iso) {
+  try {
+    var mins = Math.round((Date.now() - new Date(iso).getTime()) / 60000);
+    if (mins < 2) return 'just now';
+    if (mins < 90) return mins + ' minutes ago';
+    var h = Math.round(mins / 60);
+    if (h < 36) return h + ' hours ago';
+    return Math.round(h / 24) + ' days ago';
+  } catch (e) { return ''; }
+}
 function render(origin, label) {
   var list = document.getElementById('list');
   list.innerHTML = '';
@@ -91,7 +101,8 @@ function render(origin, label) {
     var li = document.createElement('li');
     li.innerHTML = '<span class="dist">' + d.toFixed(1) + ' mi</span>' +
       '<span class="name">' + v.name + '</span>' + (v.open ? ' <span class="badge">open</span>' : '') +
-      '<div class="meta">' + v.cuisine + ' &middot; ' + v.area + (v.phone ? ' &middot; ' + v.phone : '') + '</div>';
+      '<div class="meta">' + v.cuisine + ' &middot; ' + v.area + (v.phone ? ' &middot; ' + v.phone : '') + '</div>' +
+      '<div class="meta">' + (v.reported ? 'vendor reported this spot ' + timeAgo(v.reported) : 'area only &mdash; vendor has not pinged a spot yet') + '</div>';
     li.style.cursor = 'pointer';
     li.onclick = function () { map.setView([v.lat, v.lon], 13); v.marker.openPopup(); };
     list.appendChild(li);
