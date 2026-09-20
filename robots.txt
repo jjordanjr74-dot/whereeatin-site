@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://whereeatin.com/sitemap.xml
+Sitemap: https://jjordanjr74-dot.github.io/whereeatin-site/sitemap.xml
