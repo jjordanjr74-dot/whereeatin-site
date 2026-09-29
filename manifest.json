@@ -1,0 +1,26 @@
+{
+  "name": "Where We Eatin'? — Food Truck Tracker",
+  "short_name": "Where We Eatin",
+  "description": "Track Southern Colorado food trucks live: who's open right now, how far they are from you, what they cook and how to call them.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait",
+  "background_color": "#fef2f2",
+  "theme_color": "#d81f26",
+  "lang": "en-US",
+  "dir": "ltr",
+  "categories": ["food", "travel", "utilities"],
+  "icons": [
+    { "src": "/assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/icons/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "/assets/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Trucks open now", "short_name": "Live now", "url": "/?filter=live" },
+    { "name": "Travel stop radar", "short_name": "Radar", "url": "/radar/" }
+  ]
+}
