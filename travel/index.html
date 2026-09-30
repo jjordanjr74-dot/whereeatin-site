@@ -81,6 +81,9 @@
   (ODbL), enriched only with mapper-supplied facts and named as such per listing. Ratings appear only where a real
   report backs them. Fuel prices, where shown, are traveller-reported with the age of the report beside them and are
   never verified at the pump. Data built 2026-09-30.
+  <p>Nothing here is scraped and nothing about a price is automatic: somebody reads a pump, we file the number with
+  the age of their report attached. <a href="https://t.me/HermesEbookBot?text=fuel%20" rel="noopener">Send us one on Telegram</a> &mdash; the
+  message box opens ready to type the station, the grade and the price.</p>
 </footer>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
@@ -240,7 +243,7 @@ function renderRecs(pick, originLabel) {
   if (!fuel.length) gaps.push('No fuel stop in range.');
   gaps.push(anyPriceReported()
     ? 'Fuel prices are traveller-reported; each shows how old its report is.'
-    : 'No fuel price has been reported yet, so none are shown.');
+    : 'No fuel price has been reported yet, so none are shown - send one on Telegram and it appears after the next rebuild.');
   notes.textContent = gaps.join(' ');
 }
 
