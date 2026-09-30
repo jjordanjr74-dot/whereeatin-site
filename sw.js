@@ -13,6 +13,8 @@ const VERSION = 'wwe-v1';
 const SHELL = [
   '/',
   '/index.html',
+  '/radar/',
+  '/travel/',
   '/assets/site.js',
   '/assets/favicon.svg',
   '/assets/icons/icon-192.png',

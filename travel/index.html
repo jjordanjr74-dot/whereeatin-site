@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Road trip radar — eat and fuel on the drive | Where We Eatin'?</title>
+<meta name="description" content="782 places to eat and 42 fuel stops across Southern Colorado, sorted by how far they are from you. Distances are computed in your browser; nothing is stored.">
+<meta name="theme-color" content="#dc2626">
+<link rel="canonical" href="https://whereeatin.com/travel/">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+  :root{--ink:#111827;--muted:#4b5563;--brand:#dc2626;--paper:#fef2f2;--line:#e5e7eb;--ok:#065f46;--okbg:#ecfdf5}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Karla,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+  header{padding:18px 20px 10px;max-width:1100px;margin:0 auto}
+  h1{margin:0 0 4px;font-size:26px}
+  .sub{margin:0;color:var(--muted);font-size:15px}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px 60px;display:grid;grid-template-columns:1fr;gap:18px}
+  @media(min-width:900px){.wrap{grid-template-columns:400px 1fr}}
+  #map{height:520px;border-radius:14px;box-shadow:0 8px 30px rgba(17,24,39,.08)}
+  .panel{background:#fff;border-radius:14px;padding:16px 18px;box-shadow:0 8px 30px rgba(17,24,39,.06)}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  select,button{font:inherit;padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:#fff}
+  button.primary{background:var(--brand);color:#fff;border-color:var(--brand);font-weight:700;cursor:pointer}
+  label.chk{display:inline-flex;gap:6px;align-items:center;font-size:14px;color:var(--muted)}
+  ol#list{list-style:none;margin:14px 0 0;padding:0}
+  ol#list li{padding:10px 0;border-top:1px solid var(--line)}
+  .name{font-weight:700}
+  .meta{color:var(--muted);font-size:14px}
+  .dist{float:right;font-weight:700;color:var(--brand)}
+  .note{margin:12px 0 0;font-size:13px;color:var(--muted)}
+  a{color:var(--brand)}
+  .badge{display:inline-block;background:var(--okbg);color:var(--ok);border-radius:999px;padding:1px 8px;font-size:12px;font-weight:700}
+  .chip{display:inline-block;background:#f3f4f6;color:#374151;border-radius:999px;padding:1px 8px;font-size:12px}
+  h2{font-size:15px;margin:18px 0 4px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+  ul#recs{list-style:none;margin:6px 0 0;padding:0}
+  ul#recs li{padding:8px 0;border-top:1px solid var(--line)}
+  footer{max-width:1100px;margin:0 auto;padding:0 20px 40px;color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Road trip radar</h1>
+  <p class="sub">782 places to eat and 42 fuel stops across Southern Colorado. Distances are measured
+  from <strong>you</strong> in your own browser &mdash; your location is never sent to us or stored.</p>
+</header>
+<div class="wrap">
+  <section class="panel">
+    <div class="row">
+      <button class="primary" id="locate">Use my location</button>
+      <select id="radius" aria-label="Only show places within">
+        <option value="5">within 5 miles</option>
+        <option value="10">within 10 miles</option>
+        <option value="25" selected>within 25 miles</option>
+        <option value="60">within 60 miles</option>
+        <option value="999">any distance</option>
+      </select>
+      <select id="origin" aria-label="Measure distances from">
+        <option value="38.2544,-104.6091">from Downtown Pueblo</option>
+        <option value="38.3512,-104.72">from Pueblo West</option>
+        <option value="38.8339,-104.8214">from Colorado Springs</option>
+        <option value="38.4411,-105.2424">from Ca&ntilde;on City</option>
+        <option value="38.6106,-104.3436">from I-25 at Fountain</option>
+      </select>
+    </div>
+    <div class="row" style="margin-top:10px">
+      <label class="chk"><input type="checkbox" id="layerEat" checked> places to eat</label>
+      <label class="chk"><input type="checkbox" id="layerFuel" checked> fuel stops</label>
+    </div>
+    <p class="note" id="where">Distances are from Downtown Pueblo until you share your location.</p>
+    <h2>Worth knowing</h2>
+    <ul id="recs"><li class="meta">Working out what is near you&hellip;</li></ul>
+    <p class="note" id="notes"></p>
+    <ol id="list"></ol>
+    <p class="note" id="truncated"></p>
+  </section>
+  <div id="map"></div>
+</div>
+<footer class="note">
+  Places come from <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a> contributors
+  (ODbL), enriched only with mapper-supplied facts and named as such per listing. Ratings appear only where a real
+  report backs them. Fuel prices, where shown, are traveller-reported with the age of the report beside them and are
+  never verified at the pump. Data built 2026-09-30.
+</footer>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+var CAP = 60;
+var map = L.map('map').setView([38.45, -104.75], 8);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 18, attribution: '&copy; OpenStreetMap contributors'
+}).addTo(map);
+var youMarker = null;
+var DATA = null;
+var markers = [];
+
+function miles(a, b) {
+  var R = 3958.7613, t = Math.PI / 180;
+  var dLat = (b[0] - a[0]) * t, dLon = (b[1] - a[1]) * t;
+  var h = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+          Math.cos(a[0] * t) * Math.cos(b[0] * t) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  return 2 * R * Math.asin(Math.sqrt(h));
+}
+
+// Names, hours and URLs come from OpenStreetMap, i.e. from strangers. Escape before innerHTML:
+// third-party text in an innerHTML sink is an injection, not a formatting choice.
+function esc(v) {
+  return String(v == null ? '' : v)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+function safeUrl(v) {
+  var s = String(v == null ? '' : v);
+  return /^https?:\/\//i.test(s) ? esc(s) : '';
+}
+
+// Only the two formats this site can actually parse. Anything else is UNKNOWN, never a guess.
+function openNow(hours) {
+  if (!hours) return null;
+  h = String(hours).trim();
+  if (/^24\/7$/.test(h)) return true;
+  var m = h.match(/^(\d{1,2}):(\d{2})\s*(AM|PM)\s*-\s*(\d{1,2}):(\d{2})\s*(AM|PM)$/i);
+  if (!m) return null;
+  function mins(hh, mm, ap) {
+    var x = (parseInt(hh, 10) % 12) * 60 + parseInt(mm, 10);
+    return /pm/i.test(ap) ? x + 720 : x;
+  }
+  var a = mins(m[1], m[2], m[3]), b = mins(m[4], m[5], m[6]), now = new Date();
+  var cur = now.getHours() * 60 + now.getMinutes();
+  return b > a ? (cur >= a && cur <= b) : (cur >= a || cur <= b);
+}
+
+function ratingText(r) {
+  if (!r || !r.review_count) return 'no reviews yet';
+  return '\u2605 ' + Number(r.rating).toFixed(1) + ' from ' + r.review_count + ' report' + (r.review_count === 1 ? '' : 's');
+}
+
+function hoursText(r) {
+  if (!r.hours_today) return r.phone ? 'hours not listed &mdash; call ahead' : 'hours not listed';
+  return r.hours_today + (r.hours_source === 'operator-verified' ? ' (venue-confirmed)' :
+                          r.hours_source === 'curated' ? ' (from the listing)' : ' (from OpenStreetMap)');
+}
+
+function approx(r) { return r.geo_precision && r.geo_precision !== 'address' ? ' \u2248' : ''; }
+
+// A price is only ever printed from a report that carries its own timestamp. Nothing is averaged, nothing is
+// carried forward, and nothing is shown for a grade nobody reported.
+var PRICE_STALE_H = 12;
+function ageHours(iso) {
+  var t = Date.parse(iso);
+  if (isNaN(t)) return null;
+  return Math.max(0, Math.round((Date.now() - t) / 3600000));
+}
+function priceText(r) {
+  var p = r.prices;
+  if (!p || !p.length) return 'no price reported';
+  var out = [];
+  for (var i = 0; i < p.length; i++) {
+    var e = p[i], age = ageHours(e.reported_at);
+    var name = e.grade === 'e85' ? 'E85' : e.grade;
+    var when = age === null ? 'report time unknown'
+             : age >= PRICE_STALE_H ? '\u2014 possibly stale, ' + age + 'h ago'
+             : '(' + age + 'h ago)';
+    out.push(name + ' $' + Number(e.price).toFixed(3) + ' ' + when);
+  }
+  return out.join(' &middot; ');
+}
+function anyPriceReported() {
+  return rowsOf('fuel').some(function (r) { return r.prices && r.prices.length; });
+}
+
+function fuelFacts(r) {
+  var f = [];
+  if (r.is_truck_stop) f.push('truck stop');
+  if (r.fuel_diesel) f.push('diesel');
+  if (r.fuel_e85) f.push('E85');
+  if (r.air_pump) f.push('air pump');
+  if (r.self_service) f.push('self-service');
+  return f.join(' &middot; ');
+}
+
+function rowsOf(kind) { return (DATA && DATA.layers[kind]) || []; }
+
+function inRange(origin, maxMi) {
+  var pick = [];
+  [['eat', 'places to eat'], ['fuel', 'fuel stops']].forEach(function (pair) {
+    if (!document.getElementById(pair[0] === 'eat' ? 'layerEat' : 'layerFuel').checked) return;
+    rowsOf(pair[0]).forEach(function (r) {
+      if (r.lat == null || r.lon == null) return;
+      var d = miles(origin, [r.lat, r.lon]);
+      if (d <= maxMi) pick.push({ r: r, d: d, kind: pair[0] });
+    });
+  });
+  pick.sort(function (a, b) { return a.d - b.d; });
+  return pick;
+}
+
+function renderRecs(pick, originLabel) {
+  var box = document.getElementById('recs');
+  var notes = document.getElementById('notes');
+  box.innerHTML = '';
+  if (!pick.length) {
+    box.innerHTML = '<li class="meta">Nothing in range. Widen the radius or change where distances are measured from.</li>';
+    notes.textContent = '';
+    return;
+  }
+  var eat = pick.filter(function (p) { return p.kind === 'eat'; });
+  var fuel = pick.filter(function (p) { return p.kind === 'fuel'; });
+  var recs = [];
+  if (eat.length) recs.push(['Nearest food', eat[0], 'closest place to eat - ' + eat[0].d.toFixed(1) + ' mi direct']);
+  if (fuel.length) recs.push(['Nearest fuel', fuel[0], 'closest fuel - ' + fuel[0].d.toFixed(1) + ' mi direct']);
+
+  var rated = eat.filter(function (p) { return p.r.review_count > 0 && p.r.rating; });
+  if (rated.length) {
+    rated.sort(function (a, b) { return b.r.rating - a.r.rating; });
+    recs.push(['Best reported', rated[0],
+      'highest reported ' + Number(rated[0].r.rating).toFixed(1) + '\u2605 from ' + rated[0].r.review_count + ' report(s)']);
+  }
+  var open = pick.filter(function (p) { return openNow(p.r.hours_today) === true; });
+  if (open.length) recs.push(['Open right now', open[0], 'listed as open now - ' + open[0].r.hours_today]);
+  var stop = fuel.filter(function (p) { return p.r.is_truck_stop; });
+  if (stop.length) recs.push(['Night stop', stop[0], 'truck stop for a sleep - ' + stop[0].d.toFixed(1) + ' mi direct']);
+
+  recs.forEach(function (t) {
+    var li = document.createElement('li');
+    li.innerHTML = '<span class="name">' + esc(t[0]) + ':</span> ' + esc(t[1].r.name) +
+      ' <span class="dist">' + esc(t[1].d.toFixed(1)) + ' mi</span>' +
+      '<div class="meta">' + esc(t[2]) + '</div>';
+    box.appendChild(li);
+  });
+
+  var gaps = [];
+  if (!rated.length) gaps.push('No place in range has a report yet, so no \u201cbest rated\u201d pick is shown.');
+  var unknownHours = pick.filter(function (p) { return !p.r.hours_today; }).length;
+  if (unknownHours) gaps.push(unknownHours + ' of ' + pick.length + ' in range have no listed hours - call ahead.');
+  if (!fuel.length) gaps.push('No fuel stop in range.');
+  gaps.push(anyPriceReported()
+    ? 'Fuel prices are traveller-reported; each shows how old its report is.'
+    : 'No fuel price has been reported yet, so none are shown.');
+  notes.textContent = gaps.join(' ');
+}
+
+function render(origin, label) {
+  var list = document.getElementById('list');
+  list.innerHTML = '';
+  markers.forEach(function (m) { map.removeLayer(m); });
+  markers = [];
+  var maxMi = parseFloat(document.getElementById('radius').value);
+  var pick = inRange(origin, maxMi);
+  var shown = pick.slice(0, CAP);
+
+  shown.forEach(function (p) {
+    var r = p.r;
+    var li = document.createElement('li');
+    var kindLabel = p.kind === 'fuel' ? 'fuel stop' : (r.cuisine || 'place to eat');
+    var web = safeUrl(r.website), src = safeUrl(r.source_url);
+    li.innerHTML = '<span class="dist">' + esc(p.d.toFixed(1)) + ' mi</span>' +
+      '<span class="name">' + esc(r.name) + '</span>' + approx(r) +
+      ' <span class="chip">' + (p.kind === 'fuel' ? 'fuel' : 'eat') + '</span>' +
+      '<div class="meta">' + esc(kindLabel) + ' &middot; ' + esc(r.city || '') + (r.geo_precision && r.geo_precision !== 'address' ? ' &middot; area-level pin' : '') + '</div>' +
+      '<div class="meta">' + esc(hoursText(r)) + (r.phone ? ' &middot; <a href="tel:' + esc(String(r.phone).replace(/[^0-9+]/g, '')) + '">' + esc(r.phone) + '</a>' : '') + '</div>' +
+      '<div class="meta">' + esc(ratingText(r)) + (p.kind === 'fuel' && fuelFacts(r) ? ' &middot; ' + esc(fuelFacts(r)) : '') + '</div>' +
+      (p.kind === 'fuel' ? '<div class="meta">' + esc(priceText(r)) + '</div>' : '') +
+      (web ? '<div class="meta"><a href="' + web + '" rel="noopener nofollow">website</a></div>' : '') +
+      (src ? '<div class="meta"><a href="' + src + '" rel="noopener nofollow">source listing (OpenStreetMap)</a></div>' : '');
+    var m = L.marker([r.lat, r.lon]).addTo(map);
+    m.bindPopup('<strong>' + esc(r.name) + '</strong><br>' + esc(kindLabel) + '<br>' + esc(ratingText(r)));
+    li.style.cursor = 'pointer';
+    li.onclick = function () { map.setView([r.lat, r.lon], 14); m.openPopup(); };
+    list.appendChild(li);
+    markers.push(m);
+  });
+
+  if (!pick.length) {
+    list.innerHTML = '<li class="meta">Nothing in range. Widen the radius, or change where distances are measured from.</li>';
+  }
+  document.getElementById('truncated').textContent = pick.length > shown.length
+    ? 'Showing the nearest ' + shown.length + ' of ' + pick.length + ' in range - nearest first.'
+    : (pick.length ? 'All ' + pick.length + ' in range are listed - nearest first.' : '');
+  document.getElementById('where').textContent = 'Distances from ' + label + '.';
+  renderRecs(pick, label);
+}
+
+function currentOrigin() {
+  var sel = document.getElementById('origin');
+  // Strip the option's leading "from " so the label reads "Distances from Downtown Pueblo", not "from from".
+  var label = sel.options[sel.selectedIndex].text.replace(/^\s*from\s*/i, '');
+  return [sel.value.split(',').map(Number), label];
+}
+
+['radius', 'origin', 'layerEat', 'layerFuel'].forEach(function (id) {
+  document.getElementById(id).addEventListener('change', function () {
+    var c = currentOrigin();
+    render(c[0], c[1]);
+  });
+});
+
+document.getElementById('locate').addEventListener('click', function () {
+  var where = document.getElementById('where');
+  if (!navigator.geolocation) { where.textContent = 'This browser will not share a location - pick an origin instead.'; return; }
+  where.textContent = 'Measuring from your position\u2026';
+  navigator.geolocation.watchPosition(function (pos) {
+    var p = [pos.coords.latitude, pos.coords.longitude];
+    if (youMarker) { map.removeLayer(youMarker); }
+    youMarker = L.circleMarker(p, { radius: 8, color: '#111827', fillColor: '#111827', fillOpacity: 1 })
+      .addTo(map).bindPopup('You are here');
+    map.setView(p, 11);
+    var acc = pos.coords.accuracy ? ' (&plusmn;' + Math.round(pos.coords.accuracy) + ' m)' : '';
+    render(p, 'your location' + acc + ' - never sent to us, never stored');
+  }, function () {
+    where.textContent = 'Location permission denied - pick an origin instead.';
+  }, { enableHighAccuracy: true, timeout: 10000, maximumAge: 30000 });
+});
+
+fetch('venues.json').then(function (r) {
+  if (!r.ok) throw new Error('HTTP ' + r.status);
+  return r.json();
+}).then(function (d) {
+  DATA = d;
+  var c = currentOrigin();
+  render(c[0], c[1]);
+}).catch(function (e) {
+  document.getElementById('list').innerHTML = '<li class="meta">The venue list could not be loaded (' +
+    String(e.message || e) + '). Reload the page; the data file is generated from our own catalogue.</li>';
+  document.getElementById('recs').innerHTML = '';
+});
+</script>
+</body>
+</html>
