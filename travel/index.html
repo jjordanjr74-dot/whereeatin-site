@@ -158,10 +158,14 @@ function priceText(r) {
   for (var i = 0; i < p.length; i++) {
     var e = p[i], age = ageHours(e.reported_at);
     var name = e.grade === 'e85' ? 'E85' : e.grade;
+    // A desk filing and a driver's report are different claims; the label says which one this is.
+    var who = e.source === 'public-report' ? 'driver report'
+            : (e.source === 'desk' || e.source === 'operator') ? 'filed by our desk'
+            : 'source unknown';
     var when = age === null ? 'report time unknown'
              : age >= PRICE_STALE_H ? '\u2014 possibly stale, ' + age + 'h ago'
              : '(' + age + 'h ago)';
-    out.push(name + ' $' + Number(e.price).toFixed(3) + ' ' + when);
+    out.push(name + ' $' + Number(e.price).toFixed(3) + ' ' + who + ' ' + when);
   }
   return out.join(' &middot; ');
 }
