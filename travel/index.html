@@ -15,16 +15,18 @@
   header{padding:18px 20px 10px;max-width:1100px;margin:0 auto}
   h1{margin:0 0 4px;font-size:26px}
   .sub{margin:0;color:var(--muted);font-size:15px}
-  .wrap{max-width:1100px;margin:0 auto;padding:0 20px 60px;display:grid;grid-template-columns:1fr;gap:18px}
-  @media(min-width:900px){.wrap{grid-template-columns:400px 1fr}}
-  #map{height:520px;border-radius:14px;box-shadow:0 8px 30px rgba(17,24,39,.08)}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 20px 60px;display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
+  @media(min-width:900px){.wrap{grid-template-columns:minmax(350px,.9fr) minmax(0,1.1fr)}}
+  #map{height:min(72vh,760px);min-height:480px;border-radius:14px;box-shadow:0 8px 30px rgba(17,24,39,.08)}
+  @media(max-width:899px){.wrap{display:flex;flex-direction:column} #map{order:-1;height:42vh;min-height:300px}}
   .panel{background:#fff;border-radius:14px;padding:16px 18px;box-shadow:0 8px 30px rgba(17,24,39,.06)}
   .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-  select,button{font:inherit;padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:#fff}
+  select,button,input[type=search]{font:inherit;padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:#fff}
+  input[type=search]{min-width:0;flex:1 1 220px}
   button.primary{background:var(--brand);color:#fff;border-color:var(--brand);font-weight:700;cursor:pointer}
   label.chk{display:inline-flex;gap:6px;align-items:center;font-size:14px;color:var(--muted)}
   ol#list{list-style:none;margin:14px 0 0;padding:0}
-  ol#list li{padding:10px 0;border-top:1px solid var(--line)}
+  ol#list li{padding:12px 0;border-top:1px solid var(--line)}
   .name{font-weight:700}
   .meta{color:var(--muted);font-size:14px}
   .dist{float:right;font-weight:700;color:var(--brand)}
@@ -35,7 +37,7 @@
   h2{font-size:15px;margin:18px 0 4px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
   ul#recs{list-style:none;margin:6px 0 0;padding:0}
   ul#recs li{padding:8px 0;border-top:1px solid var(--line)}
-  footer{max-width:1100px;margin:0 auto;padding:0 20px 40px;color:var(--muted);font-size:13px}
+  footer{max-width:1200px;margin:0 auto;padding:0 20px 40px;color:var(--muted);font-size:13px}
 </style>
 </head>
 <body>
@@ -56,7 +58,7 @@
         <option value="999">any distance</option>
       </select>
       <select id="origin" aria-label="Measure distances from">
-        <option value="38.2544,-104.6091">from Downtown Pueblo</option>
+        <option value="38.2544,-104.6091" selected>from Downtown Pueblo</option>
         <option value="38.3512,-104.72">from Pueblo West</option>
         <option value="38.8339,-104.8214">from Colorado Springs</option>
         <option value="38.4411,-105.2424">from Ca&ntilde;on City</option>
@@ -67,6 +69,10 @@
       <label class="chk"><input type="checkbox" id="layerEat" checked> places to eat</label>
       <label class="chk"><input type="checkbox" id="layerFuel" checked> fuel stops</label>
     </div>
+    <div class="row" style="margin-top:10px">
+      <input type="search" id="search" aria-label="Search places" placeholder="Search name, cuisine or town" autocomplete="off">
+    </div>
+    <p class="note" id="resultCount" aria-live="polite"></p>
     <p class="note" id="where">Distances are from Downtown Pueblo until you share your location.</p>
     <h2>Worth knowing</h2>
     <ul id="recs"><li class="meta">Working out what is near you&hellip;</li></ul>
@@ -80,7 +86,7 @@
   Places come from <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a> contributors
   (ODbL), enriched only with mapper-supplied facts and named as such per listing. Ratings appear only where a real
   report backs them. Fuel prices, where shown, are traveller-reported with the age of the report beside them and are
-  never verified at the pump. Data built 2026-09-30.
+  never verified at the pump. Data built 2026-10-07.
   <p>Nothing here is scraped and nothing about a price is automatic: somebody reads a pump, we file the number with
   the age of their report attached. <a href="https://t.me/HermesEbookBot?text=fuel%20" rel="noopener">Send us one on Telegram</a> &mdash; the
   message box opens ready to type the station, the grade and the price.</p>
@@ -95,6 +101,8 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 var youMarker = null;
 var DATA = null;
 var markers = [];
+var activeOrigin = null;
+var activeLabel = '';
 
 function miles(a, b) {
   var R = 3958.7613, t = Math.PI / 180;
@@ -120,7 +128,7 @@ function safeUrl(v) {
 // Only the two formats this site can actually parse. Anything else is UNKNOWN, never a guess.
 function openNow(hours) {
   if (!hours) return null;
-  h = String(hours).trim();
+  var h = String(hours).trim();
   if (/^24\/7$/.test(h)) return true;
   var m = h.match(/^(\d{1,2}):(\d{2})\s*(AM|PM)\s*-\s*(\d{1,2}):(\d{2})\s*(AM|PM)$/i);
   if (!m) return null;
@@ -190,10 +198,14 @@ function rowsOf(kind) { return (DATA && DATA.layers[kind]) || []; }
 
 function inRange(origin, maxMi) {
   var pick = [];
+  var query = document.getElementById('search').value.trim().toLowerCase();
   [['eat', 'places to eat'], ['fuel', 'fuel stops']].forEach(function (pair) {
     if (!document.getElementById(pair[0] === 'eat' ? 'layerEat' : 'layerFuel').checked) return;
     rowsOf(pair[0]).forEach(function (r) {
       if (r.lat == null || r.lon == null) return;
+      var searchable = [r.name, r.cuisine, r.venue_type, r.tagline, r.city, r.brand, r.amenities]
+        .filter(Boolean).join(' ').toLowerCase();
+      if (query && searchable.indexOf(query) === -1) return;
       var d = miles(origin, [r.lat, r.lon]);
       if (d <= maxMi) pick.push({ r: r, d: d, kind: pair[0] });
     });
@@ -248,6 +260,8 @@ function renderRecs(pick, originLabel) {
 }
 
 function render(origin, label) {
+  activeOrigin = origin;
+  activeLabel = label;
   var list = document.getElementById('list');
   list.innerHTML = '';
   markers.forEach(function (m) { map.removeLayer(m); });
@@ -269,11 +283,13 @@ function render(origin, label) {
       '<div class="meta">' + esc(ratingText(r)) + (p.kind === 'fuel' && fuelFacts(r) ? ' &middot; ' + esc(fuelFacts(r)) : '') + '</div>' +
       (p.kind === 'fuel' ? '<div class="meta">' + esc(priceText(r)) + '</div>' : '') +
       (web ? '<div class="meta"><a href="' + web + '" rel="noopener nofollow">website</a></div>' : '') +
+      '<div class="meta"><a href="https://www.google.com/maps/dir/?api=1&destination=' +
+        encodeURIComponent(String(r.lat) + ',' + String(r.lon)) + '" target="_blank" rel="noopener">Directions</a></div>' +
       (src ? '<div class="meta"><a href="' + src + '" rel="noopener nofollow">source listing (OpenStreetMap)</a></div>' : '');
     var m = L.marker([r.lat, r.lon]).addTo(map);
     m.bindPopup('<strong>' + esc(r.name) + '</strong><br>' + esc(kindLabel) + '<br>' + esc(ratingText(r)));
     li.style.cursor = 'pointer';
-    li.onclick = function () { map.setView([r.lat, r.lon], 14); m.openPopup(); };
+    li.onclick = function (event) { if (event.target.closest('a')) return; map.setView([r.lat, r.lon], 14); m.openPopup(); };
     list.appendChild(li);
     markers.push(m);
   });
@@ -285,10 +301,14 @@ function render(origin, label) {
     ? 'Showing the nearest ' + shown.length + ' of ' + pick.length + ' in range - nearest first.'
     : (pick.length ? 'All ' + pick.length + ' in range are listed - nearest first.' : '');
   document.getElementById('where').textContent = 'Distances from ' + label + '.';
+  var query = document.getElementById('search').value.trim();
+  document.getElementById('resultCount').textContent = pick.length + ' matching place' + (pick.length === 1 ? '' : 's') +
+    ' within ' + (maxMi >= 999 ? 'any distance' : maxMi + ' mi') + (query ? ' for “' + query + '”' : '') + '.';
   renderRecs(pick, label);
 }
 
 function currentOrigin() {
+  if (activeOrigin) return [activeOrigin, activeLabel];
   var sel = document.getElementById('origin');
   // Strip the option's leading "from " so the label reads "Distances from Downtown Pueblo", not "from from".
   var label = sel.options[sel.selectedIndex].text.replace(/^\s*from\s*/i, '');
@@ -297,9 +317,17 @@ function currentOrigin() {
 
 ['radius', 'origin', 'layerEat', 'layerFuel'].forEach(function (id) {
   document.getElementById(id).addEventListener('change', function () {
+    if (id === 'origin') {
+      activeOrigin = null;
+      if (youMarker) { map.removeLayer(youMarker); youMarker = null; }
+    }
     var c = currentOrigin();
     render(c[0], c[1]);
   });
+});
+document.getElementById('search').addEventListener('input', function () {
+  var c = currentOrigin();
+  render(c[0], c[1]);
 });
 
 document.getElementById('locate').addEventListener('click', function () {
@@ -312,9 +340,14 @@ document.getElementById('locate').addEventListener('click', function () {
     youMarker = L.circleMarker(p, { radius: 8, color: '#111827', fillColor: '#111827', fillOpacity: 1 })
       .addTo(map).bindPopup('You are here');
     map.setView(p, 11);
-    var acc = pos.coords.accuracy ? ' (&plusmn;' + Math.round(pos.coords.accuracy) + ' m)' : '';
-    render(p, 'your location' + acc + ' - never sent to us, never stored');
+    activeOrigin = p;
+    var acc = pos.coords.accuracy ? ' (±' + Math.round(pos.coords.accuracy) + ' m)' : '';
+    activeLabel = 'your location' + acc + ' — never sent to us, never stored';
+    render(activeOrigin, activeLabel);
   }, function () {
+    activeOrigin = null;
+    var c = currentOrigin();
+    render(c[0], c[1]);
     where.textContent = 'Location permission denied - pick an origin instead.';
   }, { enableHighAccuracy: true, timeout: 10000, maximumAge: 30000 });
 });

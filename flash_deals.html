@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where We Eatin'? — Southern Colorado food trucks, live</title>
+<meta name="description" content="Track 9 food trucks across Pueblo, Colorado Springs, Pueblo West and Cañon City: see who's live, how far they are from you, what they cook and how to call them. Free listings, 0% delivery markup.">
+<link rel="canonical" href="https://whereeatin.com/">
+<meta name="theme-color" content="#d81f26">
+<link rel="icon" href="assets/bee_logo_square.png">
+<link rel="apple-touch-icon" href="assets/bee_logo_square.png">
+<link rel="manifest" href="manifest.json">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Where We Eatin'">
+<meta property="og:title" content="Where We Eatin'? — Southern Colorado food trucks, live">
+<meta property="og:description" content="9 trucks tracked. Distances from you, vendor-reported locations, ratings that have to be earned.">
+<meta property="og:image" content="https://whereeatin.com/assets/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://whereeatin.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Where We Eatin'? — Southern Colorado food trucks, live">
+<meta name="twitter:description" content="9 trucks tracked. Distances from you, vendor-reported locations, ratings that have to be earned.">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="flash_deals/flash-deals.css">
+</head>
+<body>
+
+<!-- Flash Deal Alert Banner -->
+<div id="flash-deal-banner" class="flash-deal-banner hidden">
+  <div class="flash-deal-content">
+    <span class="flash-deal-icon">⚡</span>
+    <span class="flash-deal-text">FLASH DEAL ALERT!</span>
+    <button class="flash-deal-close" onclick="closeFlashDealBanner()">×</button>
+  </div>
+</div>
+
+<!-- Main Site Content -->
+<div id="app">
+  <header>
+    <div class="header-content">
+      <h1>Where We Eatin'?</h1>
+      <p>Find Southern Colorado food trucks, live</p>
+      
+      <!-- Flash Deal Indicator in Header -->
+      <div id="flash-deal-indicator" class="flash-deal-indicator">
+        <span class="deal-badge">⚡ FLASH DEALS ACTIVE</span>
+        <span id="deal-count" class="deal-count">0</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="truck-list">
+      <h2>Live Food Trucks</h2>
+      <div class="truck-grid">
+        <!-- Sample truck with flash deal indicator -->
+        <div class="truck-card" data-has-flash-deal="true">
+          <h3>El Taco Loco</h3>
+          <p class="location">Pueblo Downtown</p>
+          <p class="distance">0.5 miles away</p>
+          
+          <!-- Flash Deal Badge for Individual Truck -->
+          <div class="truck-flash-deal-badge">
+            <span class="flash-badge">🔥 50% OFF</span>
+          </div>
+          
+          <button class="call-now">Call Now</button>
+        </div>
+        
+        <div class="truck-card" data-has-flash-deal="false">
+          <h3>Big Bob's BBQ</h3>
+          <p class="location">Colorado Springs</p>
+          <p class="distance">2.3 miles away</p>
+          <button class="call-now">Call Now</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Flash Deals Section -->
+    <section id="flash-deals-section">
+      <h2>⚡ Current Flash Deals</h2>
+      <div class="flash-deals-container">
+        <div class="flash-deal-item">
+          <div class="deal-header">
+            <span class="deal-icon">🔥</span>
+            <h3>El Taco Loco</h3>
+            <span class="deal-time">Active Now</span>
+          </div>
+          <div class="deal-details">
+            <p class="deal-description"><strong>50% OFF</strong> all carnitas tacos until 3 PM today!</p>
+            <p class="deal-location">Pueblo Downtown</p>
+            <p class="deal-distance">0.5 miles away</p>
+            <button class="deal-action">Go Claim Deal →</button>
+          </div>
+        </div>
+        
+        <div class="flash-deal-item">
+          <div class="deal-header">
+            <span class="deal-icon">⚡</span>
+            <h3>Joe's Pizza</h3>
+            <span class="deal-time">Expires in 45m</span>
+          </div>
+          <div class="deal-details">
+            <p class="deal-description"><strong>Buy 1 Get 1 FREE</strong> on all large pizzas!</p>
+            <p class="deal-location">Cañon City Center</p>
+            <p class="deal-distance">1.2 miles away</p>
+            <button class="deal-action">Claim Now →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="flash_deals/flash-deals.js"></script>
+<script>
+// Flash Deal Functionality
+let activeDeals = [];
+let bannerTimeout;
+
+function initFlashDeals() {
+  // Check for active flash deals every 30 seconds
+  setInterval(checkForActiveDeals, 30000);
+  checkForActiveDeals(); // Initial check
+}
+
+function checkForActiveDeals() {
+  // Simulate API call to check for active deals
+  fetch('/api/flash-deals')
+    .then(response => response.json())
+    .then(deals => {
+      updateFlashDeals(deals);
+    })
+    .catch(error => {
+      console.log('No new deals found');
+    });
+}
+
+function updateFlashDeals(deals) {
+  const newActiveDeals = deals.filter(deal => deal.isActive);
+  
+  if (newActiveDeals.length > 0 && newActiveDeals.length !== activeDeals.length) {
+    showFlashDealBanner(newActiveDeals);
+  }
+  
+  updateDealCount(newActiveDeals.length);
+  activeDeals = newActiveDeals;
+}
+
+function showFlashDealBanner(deals) {
+  const banner = document.getElementById('flash-deal-banner');
+  const content = document.querySelector('.flash-deal-content');
+  
+  // Animate the banner
+  banner.classList.remove('hidden');
+  banner.classList.add('show');
+  
+  // Make it flash
+  setInterval(() => {
+    banner.style.opacity = banner.style.opacity === '1' ? '0.7' : '1';
+  }, 500);
+  
+  // Auto-hide after 10 seconds
+  clearTimeout(bannerTimeout);
+  bannerTimeout = setTimeout(() => {
+    closeFlashDealBanner();
+  }, 10000);
+}
+
+function closeFlashDealBanner() {
+  const banner = document.getElementById('flash-deal-banner');
+  banner.classList.remove('show');
+  banner.classList.add('hidden');
+}
+
+function updateDealCount(count) {
+  document.getElementById('deal-count').textContent = count;
+  
+  const indicator = document.getElementById('flash-deal-indicator');
+  if (count > 0) {
+    indicator.style.display = 'flex';
+  } else {
+    indicator.style.display = 'none';
+  }
+}
+
+// Initialize when page loads
+document.addEventListener('DOMContentLoaded', initFlashDeals);
+</script>
+
+</body>
+</html>

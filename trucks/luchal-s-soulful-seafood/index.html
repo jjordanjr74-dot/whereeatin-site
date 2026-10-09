@@ -21,14 +21,14 @@
   <article class="vendor">
     <div class="vendor-media">
       <img src="/assets/seafood-1.jpg" alt="Luchal&#x27;s Soulful Seafood — Gourmet Seafood &amp; Soul Food Truck" width="1024" height="640">
-      <div class="vendor-pins"><span class="pin">usual spot</span></div>
+      <div class="vendor-pins"><span class="pin">usual area</span></div>
     </div>
     <div class="vendor-body">
       <h1>Luchal&#x27;s Soulful Seafood</h1>
       <p class="vendor-meta">Gourmet Seafood &amp; Soul Food Truck · Colorado Springs</p>
       <p class="small muted">Platte Ave &amp; Academy Blvd</p>
       <p class="rating"><span class="none">New listing · no reviews yet</span></p>
-      <div class="vendor-foot"><a class="btn btn-primary" href="tel:7193587014">Call (719) 358-7014</a><a class="btn btn-sm btn-ghost" href="/radar/">Radar</a></div>
+      <div class="vendor-foot"><a class="btn btn-primary" id="callBtn" href="tel:7193587014">Call (719) 358-7014</a><a class="btn btn-sm btn-ghost" href="/radar/">Radar</a></div>
     </div>
   </article>
 
@@ -49,5 +49,11 @@
 <footer class="small muted" style="margin:32px 0;text-align:center">
   <a href="/">Where We Eatin'?</a> · <a href="/privacy/">Privacy</a>
 </footer>
+<script>
+var _cb=document.getElementById('callBtn');
+if(_cb){_cb.addEventListener('click',function(){
+  if(navigator.sendBeacon)navigator.sendBeacon('/tap/20');
+});}
+</script>
 </body>
 </html>

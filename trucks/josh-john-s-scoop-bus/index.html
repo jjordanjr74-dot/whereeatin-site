@@ -21,14 +21,14 @@
   <article class="vendor">
     <div class="vendor-media">
       <img src="/assets/icecream-1.jpg" alt="Josh &amp; John&#x27;s Scoop Bus — Artisan Mobile Ice Cream Bus" width="1024" height="640">
-      <div class="vendor-pins"><span class="pin">usual spot</span></div>
+      <div class="vendor-pins"><span class="pin">usual area</span></div>
     </div>
     <div class="vendor-body">
       <h1>Josh &amp; John&#x27;s Scoop Bus</h1>
       <p class="vendor-meta">Artisan Mobile Ice Cream Bus · Colorado Springs</p>
       <p class="small muted">Tejon Street &amp; Pikes Peak Plaza</p>
       <p class="rating"><span class="none">New listing · no reviews yet</span></p>
-      <div class="vendor-foot"><a class="btn btn-primary" href="tel:7196320299">Call (719) 632-0299</a><a class="btn btn-sm btn-ghost" href="/radar/">Radar</a></div>
+      <div class="vendor-foot"><a class="btn btn-primary" id="callBtn" href="tel:7196320299">Call (719) 632-0299</a><a class="btn btn-sm btn-ghost" href="/radar/">Radar</a></div>
     </div>
   </article>
 
@@ -49,5 +49,11 @@
 <footer class="small muted" style="margin:32px 0;text-align:center">
   <a href="/">Where We Eatin'?</a> · <a href="/privacy/">Privacy</a>
 </footer>
+<script>
+var _cb=document.getElementById('callBtn');
+if(_cb){_cb.addEventListener('click',function(){
+  if(navigator.sendBeacon)navigator.sendBeacon('/tap/19');
+});}
+</script>
 </body>
 </html>

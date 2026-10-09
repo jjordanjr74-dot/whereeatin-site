@@ -1,0 +1,312 @@
+/*
+ * Premium Flash Deal System - Professional Grade
+ * For Where We Eatin' and Restaurant Radar
+ */
+
+/* Premium Flash Deal Banner */
+.flash-deal-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(90deg, #ff6b35, #f7931e);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: premiumFlash 1.5s infinite alternate, slideDown 0.3s ease-out;
+  transform-origin: top;
+}
+
+.flash-deal-banner.show {
+  animation: slideDown 0.3s ease-out, premiumFlash 1.5s infinite alternate;
+}
+
+.flash-deal-banner.hidden {
+  display: none;
+}
+
+@keyframes premiumFlash {
+  0% { background: linear-gradient(90deg, #ff6b35, #f7931e); box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3); }
+  100% { background: linear-gradient(90deg, #ff8c42, #f9a825); box-shadow: 0 6px 16px rgba(255, 140, 66, 0.4); }
+}
+
+@keyframes slideDown {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(0); }
+}
+
+.flash-deal-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.flash-deal-icon {
+  font-size: 1.8rem;
+  animation: pulse 2s infinite;
+}
+
+.flash-deal-text {
+  letter-spacing: 0.5px;
+}
+
+.flash-deal-close {
+  position: absolute;
+  right: 20px;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.flash-deal-close:hover {
+  background: rgba(255,255,255,0.3);
+  transform: scale(1.1);
+}
+
+/* Premium Flash Deal Indicator */
+.flash-deal-indicator {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #0f766e, #14b8a6);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 12px rgba(15, 118, 110, 0.3);
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 4px 12px rgba(15, 118, 110, 0.3); }
+  100% { box-shadow: 0 6px 16px rgba(20, 184, 166, 0.4); }
+}
+
+.dealbadge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.2);
+  font-size: 0.8rem;
+}
+
+.deal-count {
+  background: #fef3c7;
+  color: #92400e;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+/* Premium Truck Flash Deal Badges */
+.truck-flash-deal-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: linear-gradient(135deg, #dc2626, #ea580c);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  box-shadow: 0 4px 8px rgba(220, 38, 38, 0.3);
+  animation: bounce 2s infinite;
+  z-index: 5;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Premium Flash Deals Section */
+#flash-deals-section {
+  margin: 40px 0;
+  padding: 30px;
+  background: linear-gradient(135deg, #f0fdfa, #e6fffa);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(15, 118, 110, 0.1);
+}
+
+#flash-deals-section h2 {
+  text-align: center;
+  color: #0f766e;
+  margin-bottom: 24px;
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.flash-deals-container {
+  display: grid;
+  gap: 20px;
+}
+
+.flash-deal-item {
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.flash-deal-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #f59e0b, #ef4444);
+}
+
+.flash-deal-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(15, 118, 110, 0.15);
+  border-color: #14b8a6;
+}
+
+.deal-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.deal-icon {
+  font-size: 1.5rem;
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+.deal-header h3 {
+  color: #0f766e;
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.deal-time {
+  margin-left: auto;
+  background: #fef2f2;
+  color: #dc2626;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.deal-details .deal-description {
+  font-size: 1.1rem;
+  color: #dc2626;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.deal-details .deal-location,
+.deal-details .deal-distance {
+  color: #64748b;
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+}
+
+.deal-action {
+  background: linear-gradient(135deg, #f59e0b, #f97316);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+}
+
+.deal-action:hover {
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+}
+
+/* Premium Mobile Responsiveness */
+@media (max-width: 768px) {
+  .flash-deal-banner {
+    height: 50px;
+    padding: 0 10px;
+  }
+  
+  .flash-deal-content {
+    font-size: 1rem;
+    gap: 10px;
+  }
+  
+  .flash-deal-icon {
+    font-size: 1.4rem;
+  }
+  
+  #flash-deals-section {
+    margin: 20px 0;
+    padding: 20px;
+  }
+  
+  .flash-deal-item {
+    padding: 16px;
+  }
+  
+  .deal-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .deal-time {
+    margin-left: 0;
+  }
+}
+
+/* Accessibility Enhancements */
+@media (prefers-reduced-motion: reduce) {
+  .flash-deal-banner,
+  .flash-deal-icon,
+  .truck-flash-deal-badge {
+    animation: none;
+  }
+  
+  .flash-deal-banner {
+    animation: slideDown 0.3s ease-out;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .flash-deal-banner {
+    border-bottom: 3px solid #ff6b35;
+  }
+  
+  .truck-flash-deal-badge {
+    border: 2px solid #dc2626;
+    color: #dc2626;
+    background: white;
+  }
+}

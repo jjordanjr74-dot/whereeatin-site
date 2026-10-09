@@ -21,14 +21,14 @@
   <article class="vendor">
     <div class="vendor-media">
       <img src="/assets/burger-1.jpg" alt="Big Papa&#x27;s Grill — Gourmet Burgers &amp; Smoked BBQ" width="1024" height="640">
-      <div class="vendor-pins"><span class="pin">usual spot</span></div>
+      <div class="vendor-pins"><span class="pin">usual area</span></div>
     </div>
     <div class="vendor-body">
       <h1>Big Papa&#x27;s Grill</h1>
       <p class="vendor-meta">Gourmet Burgers &amp; Smoked BBQ · Pueblo</p>
       <p class="small muted">Downtown Pueblo &amp; Riverwalk</p>
       <p class="rating"><span class="none">New listing · no reviews yet</span></p>
-      <div class="vendor-foot"><a class="btn btn-primary" href="tel:7195452272">Call (719) 545-2272</a><a class="btn btn-sm btn-ghost" href="/radar/">Radar</a></div>
+      <div class="vendor-foot"><a class="btn btn-primary" id="callBtn" href="tel:7195452272">Call (719) 545-2272</a><a class="btn btn-sm btn-ghost" href="/radar/">Radar</a></div>
     </div>
   </article>
 
@@ -49,5 +49,11 @@
 <footer class="small muted" style="margin:32px 0;text-align:center">
   <a href="/">Where We Eatin'?</a> · <a href="/privacy/">Privacy</a>
 </footer>
+<script>
+var _cb=document.getElementById('callBtn');
+if(_cb){_cb.addEventListener('click',function(){
+  if(navigator.sendBeacon)navigator.sendBeacon('/tap/14');
+});}
+</script>
 </body>
 </html>

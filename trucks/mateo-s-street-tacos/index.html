@@ -21,14 +21,14 @@
   <article class="vendor">
     <div class="vendor-media">
       <img src="/assets/tacos-2.jpg" alt="Mateo&#x27;s Street Tacos — Authentic Mexican Street Food" width="1024" height="640">
-      <div class="vendor-pins"><span class="pin">usual spot</span></div>
+      <div class="vendor-pins"><span class="pin">usual area</span></div>
     </div>
     <div class="vendor-body">
       <h1>Mateo&#x27;s Street Tacos</h1>
       <p class="vendor-meta">Authentic Mexican Street Food · Pueblo</p>
       <p class="small muted">Northern Ave &amp; Pueblo Blvd</p>
       <p class="rating"><span class="none">New listing · no reviews yet</span></p>
-      <div class="vendor-foot"><a class="btn btn-primary" href="tel:7195611920">Call (719) 561-1920</a><a class="btn btn-sm btn-ghost" href="/radar/">Radar</a></div>
+      <div class="vendor-foot"><a class="btn btn-primary" id="callBtn" href="tel:7195611920">Call (719) 561-1920</a><a class="btn btn-sm btn-ghost" href="/radar/">Radar</a></div>
     </div>
   </article>
 
@@ -49,5 +49,11 @@
 <footer class="small muted" style="margin:32px 0;text-align:center">
   <a href="/">Where We Eatin'?</a> · <a href="/privacy/">Privacy</a>
 </footer>
+<script>
+var _cb=document.getElementById('callBtn');
+if(_cb){_cb.addEventListener('click',function(){
+  if(navigator.sendBeacon)navigator.sendBeacon('/tap/15');
+});}
+</script>
 </body>
 </html>
