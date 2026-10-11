@@ -1,0 +1,195 @@
+{
+ "name": "whereeatin-roster",
+ "description": "Typed read-only tools over the Where We Eatin' public food-truck directory (Southern Colorado). Static manifest + embedded public data; execution is client-side filtering. No booking, no payment, no PHI, no live GPS.",
+ "updated": "2026-10-11",
+ "site": "https://whereeatin.com",
+ "tools": [
+  {
+   "name": "list_vendors",
+   "description": "The public roster: tracked food trucks with name, cuisine, city, phone, reported area, check-in time, rating, review count, earned badge and paid tier. Same fields the homepage cards show.",
+   "inputSchema": {
+    "type": "object",
+    "properties": {
+     "city": {
+      "type": "string",
+      "enum": [
+       "Pueblo West",
+       "Colorado Springs",
+       "Cañon City",
+       "Pueblo"
+      ]
+     },
+     "cuisine": {
+      "type": "string"
+     }
+    },
+    "required": [],
+    "additionalProperties": false
+   }
+  },
+  {
+   "name": "vendor_lookup",
+   "description": "One truck by its roster id (from list_vendors).",
+   "inputSchema": {
+    "type": "object",
+    "properties": {
+     "id": {
+      "type": "integer"
+     }
+    },
+    "required": [
+     "id"
+    ],
+    "additionalProperties": false
+   }
+  },
+  {
+   "name": "list_cuisines",
+   "description": "Cuisine categories present in the roster right now.",
+   "inputSchema": {
+    "type": "object",
+    "properties": {},
+    "required": [],
+    "additionalProperties": false
+   }
+  }
+ ],
+ "data": {
+  "vendors": [
+   {
+    "id": 14,
+    "name": "Big Papa's Grill",
+    "cuisine": "Gourmet Burgers & Smoked BBQ",
+    "city": "Pueblo",
+    "phone": "(719) 545-2272",
+    "area": "Downtown Pueblo & Riverwalk",
+    "reported": null,
+    "rating": 0.0,
+    "reviews": 0,
+    "badge": false,
+    "tier": "free"
+   },
+   {
+    "id": 16,
+    "name": "High Grade Catering & Food Truck",
+    "cuisine": "Caribbean & Southern Fusion BBQ",
+    "city": "Pueblo",
+    "phone": "(719) 250-8819",
+    "area": "Pueblo City Park Events",
+    "reported": null,
+    "rating": 0.0,
+    "reviews": 0,
+    "badge": false,
+    "tier": "free"
+   },
+   {
+    "id": 19,
+    "name": "Josh & John's Scoop Bus",
+    "cuisine": "Artisan Mobile Ice Cream Bus",
+    "city": "Colorado Springs",
+    "phone": "(719) 632-0299",
+    "area": "Tejon Street & Pikes Peak Plaza",
+    "reported": null,
+    "rating": 0.0,
+    "reviews": 0,
+    "badge": false,
+    "tier": "free"
+   },
+   {
+    "id": 22,
+    "name": "Kona Ice of Canon City & Pueblo",
+    "cuisine": "Shaved Ice & Refreshment Truck",
+    "city": "Pueblo",
+    "phone": "(719) 275-5662",
+    "area": "Pueblo Riverwalk & Lake Pueblo",
+    "reported": null,
+    "rating": 0.0,
+    "reviews": 0,
+    "badge": false,
+    "tier": "free"
+   },
+   {
+    "id": 20,
+    "name": "Luchal's Soulful Seafood",
+    "cuisine": "Gourmet Seafood & Soul Food Truck",
+    "city": "Colorado Springs",
+    "phone": "(719) 358-7014",
+    "area": "Platte Ave & Academy Blvd",
+    "reported": null,
+    "rating": 0.0,
+    "reviews": 0,
+    "badge": false,
+    "tier": "free"
+   },
+   {
+    "id": 15,
+    "name": "Mateo's Street Tacos",
+    "cuisine": "Authentic Mexican Street Food",
+    "city": "Pueblo",
+    "phone": "(719) 561-1920",
+    "area": "Northern Ave & Pueblo Blvd",
+    "reported": null,
+    "rating": 0.0,
+    "reviews": 0,
+    "badge": false,
+    "tier": "free"
+   },
+   {
+    "id": 18,
+    "name": "Phat Frankie's BBQ",
+    "cuisine": "Texas-Style Smoked Meats",
+    "city": "Pueblo West",
+    "phone": "(719) 647-9100",
+    "area": "Pueblo West / McCulloch Blvd",
+    "reported": null,
+    "rating": 0.0,
+    "reviews": 0,
+    "badge": false,
+    "tier": "free"
+   },
+   {
+    "id": 17,
+    "name": "Sapo Guapo Tacos",
+    "cuisine": "Gourmet Taco Trailer",
+    "city": "Pueblo",
+    "phone": "(719) 542-7276",
+    "area": "Union Ave Historic District",
+    "reported": null,
+    "rating": 0.0,
+    "reviews": 0,
+    "badge": false,
+    "tier": "free"
+   },
+   {
+    "id": 21,
+    "name": "Springs Cupcake Truck",
+    "cuisine": "Mobile Gourmet Bakery & Desserts",
+    "city": "Colorado Springs",
+    "phone": "(719) 473-1002",
+    "area": "Downtown Colorado Springs / Acacia Park",
+    "reported": null,
+    "rating": 0.0,
+    "reviews": 0,
+    "badge": false,
+    "tier": "free"
+   }
+  ],
+  "cities": [
+   "Pueblo",
+   "Colorado Springs",
+   "Pueblo West",
+   "Cañon City"
+  ],
+  "cuisines": [
+   "Artisan Mobile Ice Cream Bus",
+   "Authentic Mexican Street Food",
+   "Caribbean & Southern Fusion BBQ",
+   "Gourmet Burgers & Smoked BBQ",
+   "Gourmet Seafood & Soul Food Truck",
+   "Gourmet Taco Trailer",
+   "Mobile Gourmet Bakery & Desserts",
+   "Shaved Ice & Refreshment Truck",
+   "Texas-Style Smoked Meats"
+  ]
+ }
+}
