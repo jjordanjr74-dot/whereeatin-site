@@ -50,8 +50,9 @@
   <p class="sub">932 places to eat and 42 fuel stops across Southern Colorado. Distances are measured
   from <strong>you</strong> in your own browser &mdash; your location is never sent to us or stored.</p>
   <p class="fresh" id="freshness"><strong>This is a catalogue snapshot, not a live feed.</strong> No vendor
-  check-ins update this page &mdash; the venue data below was built 2026-10-15 (see the footer). Hours
-  labelled &ldquo;curated&rdquo; are a shared listing default, not a per-venue confirmation.</p>
+  check-ins update this page &mdash; the venue data below was built 2026-10-16 (see the footer). Hours
+  appear only where the operator or OpenStreetMap publishes them; mobile trucks with no published schedule
+  are labelled &ldquo;no published hours&rdquo; &mdash; we never guess an opening time.</p>
 </header>
 <div class="wrap">
   <section class="panel">
@@ -93,7 +94,7 @@
   Places come from <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a> contributors
   (ODbL), enriched only with mapper-supplied facts and named as such per listing. Ratings appear only where a real
   report backs them. Fuel prices, where shown, are traveller-reported with the age of the report beside them and are
-  never verified at the pump. Data built 2026-10-15.
+  never verified at the pump. Data built 2026-10-16.
   <p>Nothing here is scraped and nothing about a price is automatic: somebody reads a pump, we file the number with
   the age of their report attached. <a href="https://t.me/HermesEbookBot?text=fuel%20" rel="noopener">Send us one on Telegram</a> &mdash; the
   message box opens ready to type the station, the grade and the price.</p>
@@ -154,6 +155,7 @@ function ratingText(r) {
 }
 
 function hoursText(r) {
+  if (r.hours_source === 'not-published') return 'no published hours &mdash; mobile truck (event/booking based)';
   if (!r.hours_today) return r.phone ? 'hours not listed &mdash; call ahead' : 'hours not listed';
   return r.hours_today + (r.hours_source === 'operator-verified' ? ' (venue-confirmed)' :
                           r.hours_source === 'curated' ? ' (from the listing)' : ' (from OpenStreetMap)');
@@ -292,7 +294,7 @@ function render(origin, label) {
       (web ? '<div class="meta"><a href="' + web + '" rel="noopener nofollow">website</a></div>' : '') +
       '<div class="meta"><a href="https://www.google.com/maps/dir/?api=1&destination=' +
         encodeURIComponent(String(r.lat) + ',' + String(r.lon)) + '" target="_blank" rel="noopener">Directions</a></div>' +
-      (src ? '<div class="meta"><a href="' + src + '" rel="noopener nofollow">source listing (OpenStreetMap)</a></div>' : '');
+      (src ? '<div class="meta"><a href="' + src + '" rel="noopener nofollow">source listing (' + esc(r.source || 'unknown') + ')</a></div>' : '');
     var m = L.marker([r.lat, r.lon]).addTo(map);
     m.bindPopup('<strong>' + esc(r.name) + '</strong><br>' + esc(kindLabel) + '<br>' + esc(ratingText(r)));
     li.style.cursor = 'pointer';
