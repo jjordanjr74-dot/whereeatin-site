@@ -44,7 +44,7 @@
 </style>
 </head>
 <body>
-<div class="sitnav" id="nav"><div class="sitnav-in"><a class="brand" href="/"><span class="brand-mark">WW</span> Where We Eatin'?</a><button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button><nav class="nav-links" id="navLinks" aria-label="Main"><a href="/">Trucks</a><a href="/radar/">Live radar</a><a href="/travel/" aria-current="page">Road trip</a><a href="/promotions/">Specials</a><a href="/reviews/">Reviews</a><a href="/list-your-truck/">For trucks</a><a href="https://t.me/HermesEbookBot?start=vendor">Get listed free</a></nav></div></div>
+<div class="sitnav" id="nav"><div class="sitnav-in"><a class="brand" href="/"><span class="brand-mark">WW</span> Where We Eatin'?</a><button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button><nav class="nav-links" id="navLinks" aria-label="Main"><a href="/">Trucks</a><a href="/radar/">Live radar</a><a href="/travel/" aria-current="page">Road trip</a><a href="/promotions/">Specials</a><a href="/reviews/">Reviews</a><a href="/list-your-truck/">For trucks</a></nav></div></div>
 <header>
   <h1>Road trip radar</h1>
   <p class="sub">932 places to eat and 40 fuel stops across Southern Colorado. Distances are measured
@@ -96,8 +96,8 @@
   report backs them. Fuel prices, where shown, are traveller-reported with the age of the report beside them and are
   never verified at the pump. Data built 2026-10-18.
   <p>Nothing here is scraped and nothing about a price is automatic: somebody reads a pump, we file the number with
-  the age of their report attached. <a href="https://t.me/HermesEbookBot?text=fuel%20" rel="noopener">Send us one on Telegram</a> &mdash; the
-  message box opens ready to type the station, the grade and the price.</p>
+  the age of their report attached. Fuel report submissions are temporarily paused while we set up a dedicated
+  public channel. Please confirm prices at the station before driving out.</p>
 </footer>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
@@ -264,7 +264,7 @@ function renderRecs(pick, originLabel) {
   if (!fuel.length) gaps.push('No fuel stop in range.');
   gaps.push(anyPriceReported()
     ? 'Fuel prices are traveller-reported; each shows how old its report is.'
-    : 'No fuel price has been reported yet, so none are shown - send one on Telegram and it appears after the next rebuild.');
+    : 'No fuel price has been reported yet, so none are shown. Fuel report submissions are temporarily paused.');
   notes.textContent = gaps.join(' ');
 }
 
