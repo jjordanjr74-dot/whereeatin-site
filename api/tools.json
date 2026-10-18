@@ -1,7 +1,7 @@
 {
  "name": "whereeatin-roster",
  "description": "Typed read-only tools over the Where We Eatin' public food-truck directory (Southern Colorado). Static manifest + embedded public data; execution is client-side filtering. No booking, no payment, no PHI, no live GPS.",
- "updated": "2026-10-11",
+ "updated": "2026-10-18",
  "site": "https://whereeatin.com",
  "tools": [
   {
