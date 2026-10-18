@@ -40,7 +40,7 @@
   ul#recs li{padding:8px 0;border-top:1px solid var(--line)}
   footer{max-width:1200px;margin:0 auto;padding:0 20px 40px;color:var(--muted);font-size:13px}
   .fresh{margin:10px 0 0;font-size:13px;color:var(--muted);background:#fff7ed;border-left:3px solid #f59e0b;padding:6px 10px;border-radius:0 6px 6px 0}
-  .sitnav{position:sticky;top:0;z-index:60;background:rgba(255,253,250,.93);border-bottom:1px solid #e5e7eb;font:16px/1.5 Karla,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}.sitnav-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:10px 20px;flex-wrap:wrap}.sitnav .brand{display:flex;align-items:center;gap:10px;font-weight:700;text-decoration:none;color:#111827}.sitnav .brand-mark{width:32px;height:32px;border-radius:10px;background:linear-gradient(140deg,#d81f26,#f2603a);color:#fff;display:grid;place-items:center;font-weight:800;font-size:.82rem}.sitnav .nav-links{display:flex;gap:4px;margin-left:auto;align-items:center;flex-wrap:wrap}.sitnav .nav-links a{padding:8px 11px;border-radius:999px;text-decoration:none;font-size:.92rem;font-weight:600;color:#374151}.sitnav .nav-links a:hover{background:#fef2f2;color:#111827}.sitnav .nav-links a[aria-current="page"]{background:#fee2e2;color:#991b1b}.sitnav .nav-toggle{display:none;margin-left:auto;background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:8px 12px;font:600 .92rem inherit;cursor:pointer}@media(max-width:820px){.sitnav .nav-toggle{display:block}.sitnav .nav-links{position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:2px;background:#fff;border-bottom:1px solid #e5e7eb;padding:8px;display:none}.sitnav .nav-links.open{display:flex}.sitnav .nav-links a{padding:12px}}
+  .sitnav{position:sticky;top:0;z-index:60;background:rgba(255,253,250,.93);border-bottom:1px solid #e5e7eb;font:16px/1.5 Karla,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}.sitnav-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:10px 20px;flex-wrap:wrap}.sitnav .brand{display:flex;align-items:center;gap:10px;font-weight:700;text-decoration:none;color:#111827}.sitnav .brand-mark{width:32px;height:32px;border-radius:10px;background:linear-gradient(140deg,#d81f26,#f2603a);color:#fff;display:grid;place-items:center;font-weight:800;font-size:.82rem}.sitnav .nav-links{display:flex;gap:4px;margin-left:auto;align-items:center;flex-wrap:wrap}.sitnav .nav-links a{padding:8px 11px;border-radius:999px;text-decoration:none;font-size:.92rem;font-weight:600;color:#374151}.sitnav .nav-links a:hover{background:#fef2f2;color:#111827}.sitnav .nav-links a[aria-current="page"]{background:#fee2e2;color:#991b1b}.sitnav .nav-toggle{display:none;margin-left:auto;background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:8px 12px;font:600 .92rem inherit;cursor:pointer}@media(max-width:820px){.sitnav .nav-toggle{display:block}.sitnav .nav-links{position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:2px;background:#fff;border-bottom:1px solid #e5e7eb;padding:8px;display:none}.sitnav .nav-links.open{display:flex}.sitnav .nav-links a{padding:12px}}.sitfoot{border-top:1px solid #e5e7eb;margin-top:40px;padding:22px 20px;font:15px/1.5 Karla,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:#6b7280}.sitfoot-in{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center}.sitfoot nav{display:flex;flex-wrap:wrap;gap:6px 14px}.sitfoot a{color:#374151;text-decoration:none;font-weight:600}.sitfoot a:hover{text-decoration:underline}
 </style>
 </head>
 <body>
@@ -94,7 +94,7 @@
   Places come from <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap</a> contributors
   (ODbL), enriched only with mapper-supplied facts and named as such per listing. Ratings appear only where a real
   report backs them. Fuel prices, where shown, are traveller-reported with the age of the report beside them and are
-  never verified at the pump. Data built 2026-10-17.
+  never verified at the pump. Data built 2026-10-18.
   <p>Nothing here is scraped and nothing about a price is automatic: somebody reads a pump, we file the number with
   the age of their report attached. <a href="https://t.me/HermesEbookBot?text=fuel%20" rel="noopener">Send us one on Telegram</a> &mdash; the
   message box opens ready to type the station, the grade and the price.</p>
@@ -245,7 +245,7 @@ function renderRecs(pick, originLabel) {
       'highest reported ' + Number(rated[0].r.rating).toFixed(1) + '\u2605 from ' + rated[0].r.review_count + ' report(s)']);
   }
   var open = pick.filter(function (p) { return openNow(p.r.hours_today) === true; });
-  if (open.length) recs.push(['Open right now', open[0], 'listed as open now - ' + open[0].r.hours_today]);
+  if (open.length) recs.push(['Open per listed hours', open[0], 'listed hours include now - ' + open[0].r.hours_today]);
   var stop = fuel.filter(function (p) { return p.r.is_truck_stop; });
   if (stop.length) recs.push(['Night stop', stop[0], 'truck stop for a sleep - ' + stop[0].d.toFixed(1) + ' mi direct']);
 
@@ -375,5 +375,6 @@ fetch('venues.json').then(function (r) {
 });
 (function(){var t=document.getElementById('navToggle'),l=document.getElementById('navLinks');if(t&&l){t.addEventListener('click',function(){var o=l.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');t.textContent=o?'Close':'Menu';});l.addEventListener('click',function(e){if(e.target.tagName==='A'){l.classList.remove('open');t.setAttribute('aria-expanded','false');t.textContent='Menu';}});}})();
 </script>
+<footer class="sitfoot" id="sitfoot"><div class="sitfoot-in"><span>Where We Eatin&#39;? &middot; Independent, free to list, 0% commission</span><nav aria-label="Footer"><a href="/trucks/">Trucks</a><a href="/radar/">Live radar</a><a href="/travel/">Road trip</a><a href="/promotions/">Specials</a><a href="/reviews/">Reviews</a><a href="/list-your-truck/">For trucks</a><a href="/privacy/">Privacy</a><a href="/sitemap.xml">Sitemap</a></nav></div></footer>
 </body>
 </html>

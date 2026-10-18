@@ -220,3 +220,10 @@ details p{margin:12px 0 0;color:var(--ink-2)}
   .btn:hover,.card:hover,.vendor:hover{transform:none}
 }
 @media print{.nav,.hero-cta,.banner{display:none}}
+
+/* saved trucks + share (client-side only; buttons stay hidden until favorites.js / share.js run) */
+.fav-btn{font:600 .9rem Karla,system-ui,sans-serif;background:#fff;border:1px solid var(--line,#e5e7eb);border-radius:999px;padding:7px 12px;cursor:pointer;color:var(--ink,#111827)}
+.fav-btn[aria-pressed="true"]{background:#fee2e2;border-color:#d81f26;color:#991b1b}
+.fav-btn[hidden],.share-btn[hidden],#mytrucks[hidden]{display:none}
+.share-btn{cursor:pointer}
+
