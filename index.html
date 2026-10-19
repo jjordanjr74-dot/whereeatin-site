@@ -92,7 +92,7 @@
   <section class="sec" id="trucks" style="background:var(--paper-2)">
     <div class="wrap">
       <p class="eyebrow">The roster</p>
-      <h2>Every truck we track, updated 18 Oct 2026.</h2>
+      <h2>Every truck we track, updated 19 Oct 2026.</h2>
       <p class="lead" style="margin-bottom:30px">9 trucks across Pueblo, Colorado Springs, Pueblo West and Cañon City. No trucks have checked in right now - here's who usually serves today.
       Ratings show as zero until a real customer leaves one — we don't seed them.</p>
       <div class="vendors">
@@ -384,6 +384,19 @@
             </tr>
           </tbody>
         </table>
+        <aside id="wwe-roi-calc" style="margin-top:18px;padding:16px;background:var(--paper-2);border-radius:12px">
+          <p style="margin:0 0 8px;font-weight:700">Interactive 0%-Commission Savings Calculator &middot; Se Habla Espa&ntilde;ol</p>
+          <p class="small" style="margin:0">
+            <label for="wweSales" style="font-weight:700;margin-right:8px">Weekly window sales routed via directory:</label>
+            <select id="wweSales" onchange="window.updateWweCalc && window.updateWweCalc()" style="padding:6px 10px;border-radius:8px;font-weight:700;margin-right:12px">
+              <option value="500">$500 / week</option>
+              <option value="1000" selected>$1,000 / week</option>
+              <option value="2500">$2,500 / week</option>
+              <option value="5000">$5,000 / week</option>
+            </select>
+            <strong id="wweCalcOut">At $1,000/wk in orders, 0% commission on Where We Eatin&apos;? saves your truck $13,000/year vs. a 25% delivery-app cut.</strong>
+          </p>
+        </aside>
       </div>
     </div>
   </section>
@@ -470,7 +483,7 @@
       </div>
     </div>
     <div class="foot-legal">
-      <span>© <span id="year">2026</span> Where We Eatin'? · Built and updated 2026-10-18 from our own vendor records.</span>
+      <span>© <span id="year">2026</span> Where We Eatin'? · Built and updated 2026-10-19 from our own vendor records.</span>
       <span>Listing submissions are temporarily paused while we set up a dedicated desk.</span>
     </div>
     <p class="small muted" style="margin:14px 0 0">Photos: Creative Commons (BY / BY-SA) via Flickr —
@@ -491,6 +504,47 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js').catch(function () {});
   });
 }
+window.updateWweCalc = function () {
+  var el = document.getElementById('wweSales');
+  var out = document.getElementById('wweCalcOut');
+  if (!el || !out) return;
+  var wk = parseInt(el.value || '1000', 10);
+  var yrSave = Math.round(wk * 0.25 * 52);
+  var lang = document.documentElement.getAttribute('data-lang') || 'en';
+  if (lang === 'es') {
+    out.textContent = 'Con $' + wk.toLocaleString() + '/semana en ventas, 0% de comisión en Where We Eatin'? le ahorra a su lonchera $' + yrSave.toLocaleString() + '/año frente al 25% de las apps de entrega.';
+  } else {
+    out.textContent = 'At $' + wk.toLocaleString() + '/wk in orders, 0% commission on Where We Eatin'? saves your truck $' + yrSave.toLocaleString() + '/year vs. a 25% delivery-app cut.';
+  }
+};
+(function () {
+  var es = {
+    'Get found by people who are already hungry.': 'Que lo encuentren las personas que ya tienen hambre.',
+    'Free listing': 'Listado gratis',
+    'Professional': 'Profesional',
+    'Questions people actually ask.': 'Preguntas que la gente realmente hace.',
+    'Hungry now? Open the radar.': '¿Tiene hambre ahora? Abra el radar.',
+    'Open the radar →': 'Abrir el radar →'
+  };
+  var rev = {}; Object.keys(es).forEach(function (k) { rev[es[k]] = k; });
+  var bar = document.createElement('aside');
+  bar.style.cssText = 'position:fixed;bottom:16px;left:16px;z-index:999;background:#1c1917;color:#fff;padding:6px 12px;border-radius:999px;border:2px solid #d81f26;display:flex;gap:8px;align-items:center;font-size:0.82rem;font-weight:700;';
+  var bEn = document.createElement('button'); bEn.type = 'button'; bEn.textContent = 'EN';
+  bEn.style.cssText = 'padding:4px 10px;border-radius:999px;border:none;background:#d81f26;color:#fff;font-weight:800;cursor:pointer;';
+  var bEs = document.createElement('button'); bEs.type = 'button'; bEs.textContent = 'Español (ES)';
+  bEs.style.cssText = 'padding:4px 10px;border-radius:999px;border:1px solid #fff;background:transparent;color:#fff;font-weight:800;cursor:pointer;';
+  bar.appendChild(bEn); bar.appendChild(bEs); document.body.appendChild(bar);
+  function setLang(l) {
+    document.documentElement.setAttribute('data-lang', l);
+    var d = l === 'es' ? es : rev;
+    document.querySelectorAll('h2,h3,a').forEach(function (el) {
+      if (el.children.length === 0) { var t = (el.textContent || '').trim(); if (d[t]) el.textContent = d[t]; }
+    });
+    window.updateWweCalc();
+  }
+  bEn.onclick = function () { setLang('en'); }; bEs.onclick = function () { setLang('es'); };
+  if (new URLSearchParams(location.search).get('lang') === 'es') setLang('es');
+})();
 </script>
 </body>
 </html>
