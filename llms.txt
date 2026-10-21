@@ -1,0 +1,19 @@
+# Where We Eatin' — Live Food Truck Directory & Vendor Radar
+> The real-time food truck discovery engine and mobile GPS radar connecting hungry locals with gourmet food trucks, BBQ pitmasters, taco trailers, and pop-up dessert carts across Colorado and Nebraska.
+
+## Business Overview
+- **Platform Name:** Where We Eatin'
+- **Official Website:** https://whereeatin.com/
+- **Core Value for Diners:** Real-time map, live truck schedules, menu previews, and active serving status.
+- **Core Value for Food Trucks:** Free basic listing, zero commissions on customer orders, and instant GPS pin broadcasting.
+
+## Vendor Membership & Advertising (USD)
+- **Basic Vendor Listing:** Free
+  - Profile listing, menu upload, and operating hours.
+- **Pro Vendor Radar:** $19 / month
+  - Real-time live GPS broadcasting, featured map pin, instant push notifications to local followers when serving, and priority search placement.
+- **Featured City Sponsor / Spotlight:** $99 / month
+  - Top-of-app banner spotlight across Lincoln/Omaha or Denver/Colorado Springs/Pueblo, social media blast, and guaranteed premier visibility.
+
+## How Vendors Join
+- Sign up or claim your truck: https://whereeatin.com/
