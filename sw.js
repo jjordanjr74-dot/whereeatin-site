@@ -9,7 +9,7 @@
  *   - HTML is network-first (so deployments appear immediately) with the cached shell as the offline fallback.
  *   - Static assets are cache-first, because they are content-hashed by name in practice and change rarely.
  */
-const VERSION = 'wwe-v1';
+const VERSION = 'wwe-v2';
 const SHELL = [
   '/',
   '/index.html',
