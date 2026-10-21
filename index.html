@@ -298,6 +298,42 @@ body{font-variant-numeric:tabular-nums}
     </div>
   </section>
 
+  
+  <!-- SQUAD POLL / VIRAL SHARE HUB -->
+  <section class="sec" id="squadpoll" style="background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap">
+      <p class="eyebrow">End the "I don't care, where do you want to go?" debate</p>
+      <h2>Where We Eatin' Tonight? — Squad Vote</h2>
+      <p class="lead" style="margin-bottom:20px">Pick 2 to 4 food trucks from the map, generate an instant poll link, and text it to family, coworkers, or friends. Everyone taps their vote; winner gets picked in seconds.</p>
+
+      <div id="activePollBanner" hidden style="background:var(--paper);border:2px solid var(--brand);border-radius:12px;padding:20px;margin-bottom:24px;box-shadow:0 8px 24px rgba(0,0,0,0.06)">
+        <p class="eyebrow" style="color:var(--brand);margin-bottom:6px">🗳️ SQUAD POLL ACTIVE</p>
+        <h3 id="pollQuestion" style="margin:0 0 12px">Cast your vote for dinner:</h3>
+        <div id="pollCandidates" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px"></div>
+        <p id="pollStatus" class="small muted" style="margin:0">Tap your choice to cast your vote. Instant results calculate live in your browser.</p>
+      </div>
+
+      <div class="poll-builder" style="background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:24px">
+        <h3 style="margin-top:0;margin-bottom:12px">Create a group dinner poll:</h3>
+        <p class="small muted" style="margin-bottom:16px">Select 2 to 4 trucks to put on the ballot:</p>
+        <div id="pollTruckChecklist" style="display:grid;grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));gap:10px;margin-bottom:20px">
+          <label style="display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer"><input type="checkbox" name="truck_opt" value="Big Papa's Grill" checked> Big Papa's Smoked BBQ</label>
+          <label style="display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer"><input type="checkbox" name="truck_opt" value="Mateo's Street Tacos" checked> Mateo's Street Tacos</label>
+          <label style="display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer"><input type="checkbox" name="truck_opt" value="Luchal's Soulful Seafood"> Luchal's Soulful Seafood</label>
+          <label style="display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer"><input type="checkbox" name="truck_opt" value="Phat Frankie's BBQ"> Phat Frankie's BBQ</label>
+          <label style="display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer"><input type="checkbox" name="truck_opt" value="Sapo Guapo Tacos"> Sapo Guapo Tacos</label>
+          <label style="display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer"><input type="checkbox" name="truck_opt" value="Josh & John's Scoop Bus"> Josh & John's Scoop Bus</label>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+          <button type="button" id="btnShareSquadPoll" class="btn btn-primary" style="padding:12px 20px;font-weight:700">📱 Share Poll with Friends</button>
+          <button type="button" id="btnSmsSquadPoll" class="btn btn-ghost" style="padding:12px 18px">💬 Text to Group (SMS)</button>
+          <button type="button" id="btnCopySquadPoll" class="btn btn-ghost" style="padding:12px 18px">📋 Copy Link</button>
+          <span id="pollShareFeedback" class="small muted" style="margin-left:8px"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="sec tight" id="mytrucks" hidden style="background:var(--paper-2)">
     <div class="wrap">
       <p class="eyebrow">Saved on this device</p>
