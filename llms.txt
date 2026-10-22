@@ -5,6 +5,31 @@
 - **Platform Name:** Where We Eatin'
 - **Home Base:** Pueblo, Colorado (120-mile radius coverage across Southern CO & Front Range)
 - **Official Website:** https://whereeatin.com/
+- **Public Intake & Alerts Bot:** https://t.me/Sheba_telegram_bot (`?start=vendor`, `?start=review`, `?start=follow-<slug>`)
+- **Agent / WebMCP Tool Manifest:** https://whereeatin.com/api/tools.json
+- **Sitemap:** https://whereeatin.com/sitemap.xml
+
+## Core Public Surfaces
+- **Home & Squad Poll (`#squadpoll`):** https://whereeatin.com/
+- **Live Distance Radar:** https://whereeatin.com/radar/
+- **Road Trip Eat & Fuel Radar:** https://whereeatin.com/travel/
+- **All Tracked Trucks:** https://whereeatin.com/trucks/
+- **Specials & Party Combos:** https://whereeatin.com/promotions/
+- **Customer Reviews:** https://whereeatin.com/reviews/
+- **List Your Food Truck (Free, 0% Commission):** https://whereeatin.com/list-your-truck/
+
+## 120-Mile Southern Colorado City Hubs
+- **Pueblo, CO (Home Base):** https://whereeatin.com/food-trucks-pueblo-co/
+- **Pueblo West, CO (12 mi):** https://whereeatin.com/food-trucks-pueblo-west-co/
+- **Fountain & Fort Carson, CO (28 mi):** https://whereeatin.com/food-trucks-fountain-co/
+- **Cañon City, CO (39 mi):** https://whereeatin.com/food-trucks-canon-city-co/
+- **Colorado Springs, CO (42 mi):** https://whereeatin.com/food-trucks-colorado-springs-co/
+- **Walsenburg & Huerfano County, CO (48 mi):** https://whereeatin.com/food-trucks-walsenburg-co/
+- **Monument & Tri-Lakes, CO (62 mi):** https://whereeatin.com/food-trucks-monument-co/
+- **La Junta & Lower Arkansas Valley, CO (65 mi):** https://whereeatin.com/food-trucks-la-junta-co/
+- **Castle Rock, CO (84 mi):** https://whereeatin.com/food-trucks-castle-rock-co/
+- **Trinidad, CO (85 mi):** https://whereeatin.com/food-trucks-trinidad-co/
+- **Salida & Upper Arkansas Valley, CO (96 mi):** https://whereeatin.com/food-trucks-salida-co/
 
 ## Verified Vendor Tiers & Event Deposits (USD)
 - **Free Tier:** $0 / month (basic vendor directory listing)
