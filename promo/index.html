@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where We Eatin': get your food truck's page</title>
+<meta name="description" content="Where We Eatin' lists food trucks with a menu, phone and a pin on the radar map. Start free; Professional is $15/mo and Premier is $35/mo.">
+<link rel="canonical" href="https://whereeatin.com/promo/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Where We Eatin': get your food truck's page">
+<meta property="og:description" content="Start free. Professional $15/mo. Premier $35/mo. whereeatin.com">
+<meta property="og:image" content="https://whereeatin.com/promo/assets/og.png">
+<meta property="og:url" content="https://whereeatin.com/promo/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Where We Eatin': get your food truck's page">
+<meta name="twitter:description" content="Start free. Professional $15/mo. Premier $35/mo. whereeatin.com">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<style>
+@font-face{font-family:"DM Sans";src:url("fonts/DMSans.ttf") format("truetype");font-weight:100 1000;font-display:swap}
+@font-face{font-family:"Archivo Black";src:url("fonts/ArchivoBlack-Regular.ttf") format("truetype");font-weight:400;font-display:swap}
+/* Tokens: Airbnb design system (popular-web-designs/templates/airbnb.md) re-skinned with the WWE brand ramp */
+:root{--brand:#d81f26;--brand-2:#f2603a;--brand-ink:#a3141a;--ink:#222222;--muted:#5f5f5f;--line:#e4e4e4;--surface:#f7f7f7;--bg:#ffffff;
+--shadow:rgba(0,0,0,.02) 0 0 0 1px,rgba(0,0,0,.04) 0 2px 6px,rgba(0,0,0,.1) 0 4px 8px;--r-btn:8px;--r-card:20px;--r-lg:32px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-weight:500;color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--brand-ink)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-weight:700;letter-spacing:-.02em;line-height:1.12;margin:0 0 .5em}
+h1,h2{font-family:"Archivo Black","DM Sans",sans-serif;font-weight:400}
+h1{font-size:clamp(2.2rem,7vw,4.2rem)}
+h2{font-size:clamp(1.6rem,4.4vw,2.5rem)}
+h3{font-size:1.2rem}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;background:#fff;padding:8px 12px;z-index:9}
+.top{position:absolute;inset:0 0 auto 0;z-index:3}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px}
+.logo{color:#fff;text-decoration:none;font-family:"Archivo Black",sans-serif;font-size:1.15rem}
+.top nav a{color:#fff;text-decoration:none;font-weight:600;margin-left:18px;font-size:.95rem}
+.hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;color:#fff;overflow:hidden;background:#1a1012}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,6,8,.55) 0%,rgba(10,6,8,.25) 30%,rgba(10,6,8,.78) 72%,rgba(10,6,8,.92) 100%)}
+.hero .wrap{position:relative;z-index:2;padding-top:120px;padding-bottom:64px}
+.eyebrow{display:inline-block;font-weight:700;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:14px;background:var(--brand);color:#fff;margin-bottom:18px;box-shadow:inset 0 -3px 0 var(--brand-2)}
+.hero p.sub{font-size:clamp(1.05rem,2.4vw,1.3rem);max-width:640px;color:#fdf1ee;margin:0 0 28px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;text-decoration:none;font-weight:700;padding:14px 22px;border-radius:var(--r-btn);font-size:1rem;transition:transform .15s ease,box-shadow .15s ease}
+.btn:hover{transform:translateY(-1px);box-shadow:rgba(0,0,0,.18) 0 6px 16px}
+.btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-ghost{background:rgba(255,255,255,.12);color:#fff;border:2px solid rgba(255,255,255,.85)}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-light{background:#fff;color:var(--brand-ink)}
+section{padding:72px 0}
+.lead{color:var(--muted);font-size:1.1rem;max-width:680px}
+.grid3{display:grid;gap:20px;grid-template-columns:1fr}
+.card{background:#fff;border-radius:var(--r-card);box-shadow:var(--shadow);padding:26px}
+.card .n{display:inline-flex;width:40px;height:40px;border-radius:50%;align-items:center;justify-content:center;color:#fff;font-weight:700;background:var(--brand);box-shadow:inset -4px -4px 0 var(--brand-2);margin-bottom:14px}
+.card p{color:var(--muted);margin:0}
+.alt{background:var(--surface)}
+.video{border-radius:var(--r-card);overflow:hidden;box-shadow:var(--shadow);background:#111;aspect-ratio:16/9}
+.video video{width:100%;height:100%;display:block;object-fit:cover}
+.note{font-size:.9rem;color:var(--muted);margin-top:12px}
+.tiers{display:grid;gap:20px;grid-template-columns:1fr;margin-top:28px}
+.tier{position:relative;background:#fff;border-radius:var(--r-card);box-shadow:var(--shadow);padding:28px;display:flex;flex-direction:column}
+.tier.feat{outline:3px solid var(--brand)}
+.tier .price{font-family:"Archivo Black",sans-serif;font-size:2.4rem;margin:6px 0 2px}
+.tier .price small{font-family:"DM Sans",sans-serif;font-size:1rem;color:var(--muted);font-weight:600}
+.tier ul{padding-left:20px;margin:14px 0 22px;color:var(--ink)}
+.tier li{margin:6px 0}
+.tier .btn{margin-top:auto;text-align:center}
+.claims{margin-top:36px;background:#fff;border-radius:var(--r-card);box-shadow:var(--shadow);padding:26px}
+.claims ul{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:8px;grid-template-columns:1fr}
+.claims li{display:flex;justify-content:space-between;gap:12px;align-items:center;border-top:1px solid var(--line);padding-top:8px}
+.claims a{font-weight:700}
+.trucks{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;padding:0;list-style:none}
+.trucks a{display:inline-block;text-decoration:none;color:var(--ink);background:#fff;border-radius:14px;padding:8px 14px;box-shadow:var(--shadow);font-weight:600}
+.band{background:var(--brand);color:#fff;border-radius:var(--r-lg);padding:48px 28px;text-align:center;background-image:linear-gradient(135deg,var(--brand) 0%,var(--brand) 55%,#c41b22 100%);position:relative;overflow:hidden}
+.band::before{content:"";position:absolute;inset:0 0 auto 0;height:8px;background:linear-gradient(90deg,var(--brand),var(--brand-2))}
+.band p{color:#fff;font-size:1.15rem;margin:0 auto 24px;max-width:560px}
+footer{padding:40px 0 56px;color:var(--muted);font-size:.92rem;border-top:1px solid var(--line)}
+footer a{color:var(--ink)}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.btn{transition:none}html{scroll-behavior:auto}}
+@media (min-width:768px){.grid3{grid-template-columns:repeat(3,1fr)}.tiers{grid-template-columns:repeat(3,1fr)}.claims ul{grid-template-columns:1fr 1fr}section{padding:96px 0}}
+@media (max-width:420px){.top nav a.hide-s{display:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap">
+  <a class="logo" href="../">Where We Eatin'</a>
+  <nav aria-label="Primary"><a class="hide-s" href="#how">How it works</a><a href="#pricing">Pricing</a><a href="../trucks/">Trucks</a></nav>
+</div></header>
+
+<main id="main">
+<section class="hero" aria-label="Introduction">
+  <img src="assets/hero.jpg" alt="A crowd lined up at a food truck window at an outdoor street-food event" width="1024" height="768" fetchpriority="high">
+  <div class="wrap">
+    <span class="eyebrow">For food truck owners</span>
+    <h1>Show hungry people<br>where you're parked.</h1>
+    <p class="sub">Your truck gets a menu, a phone number, and a pin on the radar map at whereeatin.com. Start free. Upgrade once it's paying you back.</p>
+    <div class="btns">
+      <a class="btn btn-primary" href="../list-your-truck/">Get your truck's page</a>
+      <a class="btn btn-ghost" href="../trucks/">Browse trucks</a>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="why">
+  <div class="wrap">
+    <h2 id="why" class="reveal">Already working for nine trucks</h2>
+    <p class="lead reveal">Nothing here is a promise about the future. This is what the directory does today.</p>
+    <div class="grid3">
+      <article class="card reveal"><span class="n" aria-hidden="true">1</span><h3>Every truck has its own page</h3><p>Nine trucks are listed right now. Each one has a live page at whereeatin.com/trucks/ with its menu and phone number.</p></article>
+      <article class="card reveal"><span class="n" aria-hidden="true">2</span><h3>A pin on the radar map</h3><p>Diners open the radar page to see who's out. Trucks can check in, and a check-in shows for up to four hours. A truck only shares its spot when it chooses to.</p></article>
+      <article class="card reveal"><span class="n" aria-hidden="true">3</span><h3>Free to start, no contract</h3><p>The free listing covers your roster entry, menu, phone, reviews, and radar pin. Paid tiers bill monthly, and you can stop anytime.</p></article>
+    </div>
+    <ul class="trucks reveal" aria-label="Trucks listed today">
+      <li><a href="../trucks/big-papa-s-grill/">Big Papa's Grill</a></li>
+      <li><a href="../trucks/high-grade-catering-food-truck/">High Grade Catering &amp; Food Truck</a></li>
+      <li><a href="../trucks/josh-john-s-scoop-bus/">Josh &amp; John's Scoop Bus</a></li>
+      <li><a href="../trucks/kona-ice-of-canon-city-pueblo/">Kona Ice of Canon City &amp; Pueblo</a></li>
+      <li><a href="../trucks/luchal-s-soulful-seafood/">Luchal's Soulful Seafood</a></li>
+      <li><a href="../trucks/mateo-s-street-tacos/">Mateo's Street Tacos</a></li>
+      <li><a href="../trucks/phat-frankie-s-bbq/">Phat Frankie's BBQ</a></li>
+      <li><a href="../trucks/sapo-guapo-tacos/">Sapo Guapo Tacos</a></li>
+      <li><a href="../trucks/springs-cupcake-truck/">Springs Cupcake Truck</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="alt" aria-labelledby="watch">
+  <div class="wrap">
+    <h2 id="watch" class="reveal">Watch: how it works</h2>
+    <div class="video reveal">
+      <video controls preload="none" playsinline poster="video/wwe_16x9.jpg" src="video/wwe_16x9.mp4" aria-label="Where We Eatin' explainer video">
+        Your browser can't play this video. The same steps are written out below under How it works.
+      </video>
+    </div>
+    <p class="note">Captioned walkthrough of the steps below.</p>
+  </div>
+</section>
+
+<section id="pricing" aria-labelledby="price-h">
+  <div class="wrap">
+    <h2 id="price-h" class="reveal">Simple monthly pricing</h2>
+    <p class="lead reveal">Three tiers, one price list. You pay exactly what Stripe charges.</p>
+    <div class="tiers">
+      <article class="tier reveal">
+        <h3>Free listing</h3>
+        <p class="price">$0</p>
+        <ul><li>Roster entry</li><li>Menu and phone number</li><li>Reviews</li><li>Pin on the radar map</li></ul>
+        <a class="btn btn-dark" href="../list-your-truck/">List your truck free</a>
+      </article>
+      <article class="tier feat reveal">
+        <h3>Professional</h3>
+        <p class="price">$15<small>/mo</small></p>
+        <ul><li>Everything in Free</li><li>Your own listing page</li><li>Menu upkeep</li><li>A weekly social post</li></ul>
+        <a class="btn btn-primary" href="#claim">Claim Professional</a>
+      </article>
+      <article class="tier reveal">
+        <h3>Premier</h3>
+        <p class="price">$35<small>/mo</small></p>
+        <ul><li>Everything in Professional</li><li>Top of the roster</li><li>First in the radius on the radar</li><li>Large photo</li><li>Event priority</li></ul>
+        <a class="btn btn-dark" href="../list-your-truck/">Ask for Premier</a>
+      </article>
+    </div>
+    <div class="claims reveal" id="claim">
+      <h3>Already listed? Use your truck's own Professional link</h3>
+      <p class="note">Each link below is a secure Stripe checkout for $15/mo, tagged to one truck. Paying on your truck's link upgrades that truck only, so please use only the link with your truck's name. Not listed yet? <a href="../list-your-truck/">List your truck first</a>.</p>
+      <ul>
+        <li><span>Big Papa's Grill</span><a href="https://buy.stripe.com/7sYfZa6X93az75q4yl08g04" rel="noopener">Claim</a></li>
+        <li><span>High Grade Catering &amp; Food Truck</span><a href="https://buy.stripe.com/28E00cdlx9yX4Xi1m908g05" rel="noopener">Claim</a></li>
+        <li><span>Josh &amp; John's Scoop Bus</span><a href="https://buy.stripe.com/cNifZa0yLbH5cpK9SF08g06" rel="noopener">Claim</a></li>
+        <li><span>Kona Ice of Canon City &amp; Pueblo</span><a href="https://buy.stripe.com/6oU4gs2GT5iH3Te7Kx08g07" rel="noopener">Claim</a></li>
+        <li><span>Luchal's Soulful Seafood</span><a href="https://buy.stripe.com/8x24gsbdph1p61md4R08g08" rel="noopener">Claim</a></li>
+        <li><span>Mateo's Street Tacos</span><a href="https://buy.stripe.com/dRm6oA5T56mL75q7Kx08g03" rel="noopener">Claim</a></li>
+        <li><span>Phat Frankie's BBQ</span><a href="https://buy.stripe.com/14A00c6X93azgG07Kx08g09" rel="noopener">Claim</a></li>
+        <li><span>Sapo Guapo Tacos</span><a href="https://buy.stripe.com/dRm6oAepBcL93Te1m908g0a" rel="noopener">Claim</a></li>
+        <li><span>Springs Cupcake Truck</span><a href="https://buy.stripe.com/dRm4gs3KXfXl4Xi4yl08g0b" rel="noopener">Claim</a></li>
+      </ul>
+    </div>
+    <div class="claims reveal" style="margin-top:24px;overflow-x:auto">
+      <h3>In Today&apos;s Economy: How Where We Eatin&apos; Compares to Delivery Apps &amp; Directories</h3>
+      <p class="note" style="margin-bottom:14px">Keep 100% of every window order while customers pay your real menu price.</p>
+      <table style="width:100%;border-collapse:collapse;font-size:.92rem;min-width:540px;text-align:left">
+        <thead>
+          <tr style="border-bottom:2px solid var(--line)">
+            <th style="padding:10px 12px">Feature &amp; Cost</th>
+            <th style="padding:10px 12px;color:var(--brand-ink)">Where We Eatin&apos;</th>
+            <th style="padding:10px 12px">Delivery Apps (DoorDash / Uber Eats)</th>
+            <th style="padding:10px 12px">National Directories (Roaming Hunger / Truckster)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--line)">
+            <td style="padding:10px 12px;font-weight:700">Commission Per Order</td>
+            <td style="padding:10px 12px;font-weight:700;color:var(--brand-ink)">0% commission</td>
+            <td style="padding:10px 12px">15%&ndash;30% commission</td>
+            <td style="padding:10px 12px">Catering/event fee cut</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--line)">
+            <td style="padding:10px 12px;font-weight:700">Customer Menu Markup</td>
+            <td style="padding:10px 12px;font-weight:700;color:var(--brand-ink)">0% markup &middot; Real truck prices</td>
+            <td style="padding:10px 12px">15%&ndash;30% markup + service fees</td>
+            <td style="padding:10px 12px">Prices often omitted</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-weight:700">Monthly Plan</td>
+            <td style="padding:10px 12px;font-weight:700;color:var(--brand-ink)">$0 Free &middot; $15/mo Pro &middot; $35/mo Premier</td>
+            <td style="padding:10px 12px">Tablet &amp; promo fees</td>
+            <td style="padding:10px 12px">$25+/mo or catering lock-in</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="note" style="margin-top:14px"><strong>Colorado Bounce Club Partner Perk (719-299-0772):</strong> Listed food trucks get <strong>20% OFF weekday &amp; rally bounce houses</strong> + a <strong>$20 referral credit</strong> toward Professional ($15/mo) or Premier ($35/mo) whenever a catering customer bundles an 8-hour inflatable from <a href="https://www.coloradobounceclub.com/" target="_blank" rel="noopener">ColoradoBounceClub.com</a> (customers get $25 OFF their bounce house!).</p>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="alt" aria-labelledby="how-h">
+  <div class="wrap">
+    <h2 id="how-h" class="reveal">How it works</h2>
+    <div class="grid3">
+      <article class="card reveal"><span class="n" aria-hidden="true">1</span><h3>Tell us about your truck</h3><p>Send your truck name, what you sell, a phone number, your usual area and your service days.</p></article>
+      <article class="card reveal"><span class="n" aria-hidden="true">2</span><h3>Go live free</h3><p>Your truck joins the roster with its menu, phone and a pin on the radar map. Menu prices stay marked unconfirmed until you confirm them.</p></article>
+      <article class="card reveal"><span class="n" aria-hidden="true">3</span><h3>Upgrade when you're ready</h3><p>Professional is $15/mo for your own listing page and a weekly social post. Premier is $35/mo for top placement.</p></article>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="cta-h">
+  <div class="wrap">
+    <div class="band reveal">
+      <h2 id="cta-h">Put your truck on the map today</h2>
+      <p>It takes one message to get listed, and the free tier costs nothing.</p>
+      <div class="btns" style="justify-content:center">
+        <a class="btn btn-light" href="../list-your-truck/">Get your truck's page</a>
+        <a class="btn btn-ghost" href="../radar/">See the radar map</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Where We Eatin'</strong> · <a href="https://whereeatin.com/">whereeatin.com</a> · <a href="../trucks/">Trucks</a> · <a href="../radar/">Radar</a> · <a href="../list-your-truck/">List your truck</a> · <a href="../privacy/">Privacy</a></p>
+    <p>Confirm menus, prices and hours directly with each truck. Checkout is handled by Stripe.</p>
+    <p>Photos (Flickr, Creative Commons): street-food crowd by Geoff Peters 604 (CC BY 2.0); food truck by Phil Denton (CC BY-SA 2.0). Photos show food trucks in general, not the trucks listed above.</p>
+  </div>
+</footer>
+<script>
+(function(){var els=document.querySelectorAll('.reveal');if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px'});els.forEach(function(e){io.observe(e)})})();
+</script>
+</body>
+</html>
