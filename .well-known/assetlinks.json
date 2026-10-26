@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.whereeatin.app",
+      "sha256_cert_fingerprints": [
+        "3F:0C:7E:43:11:81:6C:1F:42:67:90:7C:F4:9C:CF:AE:B6:61:64:90:38:E3:CF:B5:57:CA:1B:1E:88:93:78:D1"
+      ]
+    }
+  }
+]
