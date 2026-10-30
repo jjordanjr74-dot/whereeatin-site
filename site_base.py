@@ -2,7 +2,7 @@
 
 WHY THIS EXISTS
   The site moved to whereeatin.com, but four separate build scripts and two static files still carried the old
-  temporary Pages address (`jjordanjr74-dot.github.io/whereeatin-site`) in their canonical tags, og:url, JSON-LD
+  temporary Pages address (`whereeatin.com`) in their canonical tags, og:url, JSON-LD
   and sitemap. That is worse than cosmetic: a canonical tag or sitemap entry naming the github.io URL tells search
   engines the temporary address is the authoritative one, so the custom domain quietly fights the very signal it
   was bought for.
