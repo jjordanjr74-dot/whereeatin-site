@@ -385,7 +385,7 @@ def footer_block() -> str:
         '<div style="width:100%;font-size:13px;color:#6b5e50;margin-top:6px;padding-top:8px;border-top:1px dashed #e2d8ca">'
         'Southern CO Sister Network: '
         '<a href="https://restaurantradar.app/">Restaurant Radar (Dining &amp; Fuel)</a> &middot; '
-        '<a href="https://www.coloradobounceclub.com/">Colorado Bounce Club ($25 OFF w/ Truck)</a> &middot; '
+        '<a href="https://coloradobounceclub.com/">Colorado Bounce Club ($25 OFF w/ Truck)</a> &middot; '
         '<a href="https://beethelightmassage.com/">Bee The Light Massage</a> &middot; '
         '<a href="https://thesoapbook.com/">SOAP Autopilot</a> &middot; '
         '<a href="https://baadlandsfarms.com/">Baadlands Farms</a> &middot; '
