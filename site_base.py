@@ -381,9 +381,20 @@ NAV_CSS = NAV_CSS + FOOT_CSS
 def footer_block() -> str:
     """The one footer every public page ends with. Same links everywhere, generated here only."""
     links = "".join(f'<a href="{h}">{t}</a>' for t, h in FOOT_LINKS)
+    partners = (
+        '<div style="width:100%;font-size:13px;color:#6b5e50;margin-top:6px;padding-top:8px;border-top:1px dashed #e2d8ca">'
+        'Southern CO Sister Network: '
+        '<a href="https://restaurantradar.app/">Restaurant Radar (Dining &amp; Fuel)</a> &middot; '
+        '<a href="https://www.coloradobounceclub.com/">Colorado Bounce Club ($25 OFF w/ Truck)</a> &middot; '
+        '<a href="https://beethelightmassage.com/">Bee The Light Massage</a> &middot; '
+        '<a href="https://thesoapbook.com/">SOAP Autopilot</a> &middot; '
+        '<a href="https://baadlandsfarms.com/">Baadlands Farms</a> &middot; '
+        '<a href="https://politicalpayola.com/">Political Payola</a>'
+        '</div>'
+    )
     return ('<footer class="sitfoot" id="sitfoot"><div class="sitfoot-in">'
             '<span>Where We Eatin&#39;? &middot; Independent civic directory &middot; 0% commission &middot; Pueblo, CO + 120-mile corridor</span>'
-            f'<nav aria-label="Footer">{links}</nav></div></footer>')
+            f'<nav aria-label="Footer">{links}</nav>{partners}</div></footer>')
 
 
 def live_sentence(n: int) -> str:
