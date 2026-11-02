@@ -50,5 +50,5 @@
 <script src="/assets/share.js" defer></script>
 <script>(function(){var t=document.getElementById('navToggle'),l=document.getElementById('navLinks');if(t&&l){t.addEventListener('click',function(){var o=l.classList.toggle('open');t.setAttribute('aria-expanded',o?'true':'false');t.textContent=o?'Close':'Menu';});l.addEventListener('click',function(e){if(e.target.tagName==='A'){l.classList.remove('open');t.setAttribute('aria-expanded','false');t.textContent='Menu';}});}})();
 var _cb=document.getElementById("callBtn");if(_cb){_cb.addEventListener("click",function(){if(navigator.sendBeacon)navigator.sendBeacon("/tap/20");});}</script>
-</body>
+<script src="/assets/funnel-beacon.js" defer></script></body>
 </html>
