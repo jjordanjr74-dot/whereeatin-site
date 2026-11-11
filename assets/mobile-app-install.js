@@ -20,13 +20,13 @@
     if (document.getElementById('sheba-mobile-app-bar')) return;
     var bar = document.createElement('div');
     bar.id = 'sheba-mobile-app-bar';
-    bar.style.cssText = 'position:fixed;bottom:16px;left:16px;z-index:9998;display:flex;align-items:center;gap:8px;background:#faf7f2;color:#ffffff;border:1px solid #b23a26;border-radius:999px;padding:7px 12px;box-shadow:0 10px 28px rgba(0,0,0,0.45);font-family:system-ui,-apple-system,sans-serif;font-size:12.5px;line-height:1.2;max-width:calc(100vw - 32px);';
+    bar.style.cssText = 'position:fixed;bottom:16px;left:16px;z-index:9998;display:flex;align-items:center;gap:8px;background:#faf7f2;color:#1c1917;border:1px solid #b23a26;border-radius:999px;padding:4px 6px;box-shadow:0 10px 28px rgba(28,25,23,0.18);font-family:system-ui,-apple-system,sans-serif;font-size:12.5px;line-height:1.2;max-width:calc(100vw - 32px);';
     var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent || '') && !window.MSStream;
 
     var installBtn = document.createElement('button');
     installBtn.type = 'button';
     installBtn.textContent = isIOS ? '📱 Install iOS App' : '📱 Install App';
-    installBtn.style.cssText = 'background:#b23a26;color:#fff;border:none;border-radius:999px;padding:6px 11px;font-weight:700;font-size:12px;cursor:pointer;white-space:nowrap;';
+    installBtn.style.cssText = 'background:#b23a26;color:#fff;border:none;border-radius:999px;padding:0 14px;min-height:44px;min-width:44px;font-weight:700;font-size:14px;cursor:pointer;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;';
     installBtn.onclick = function() {
       if (deferredPrompt) {
         deferredPrompt.prompt();
@@ -42,13 +42,13 @@
     apkLink.href = '/downloads/whereeatin.apk';
     apkLink.setAttribute('download', 'whereeatin.apk');
     apkLink.textContent = '⬇ Android APK';
-    apkLink.style.cssText = 'color:#e2e8f0;text-decoration:none;font-weight:600;font-size:11.5px;padding:4px 8px;border-radius:999px;border:1px solid rgba(255,255,255,0.22);white-space:nowrap;';
+    apkLink.style.cssText = 'color:#1c1917;text-decoration:none;font-weight:600;font-size:14px;padding:0 12px;min-height:44px;min-width:44px;border-radius:999px;border:1px solid #b23a26;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;';
 
     var closeBtn = document.createElement('button');
     closeBtn.type = 'button';
     closeBtn.setAttribute('aria-label', 'Dismiss mobile app bar');
     closeBtn.textContent = '✕';
-    closeBtn.style.cssText = 'background:transparent;color:#94a3b8;border:none;font-size:13px;cursor:pointer;padding:2px 4px;';
+    closeBtn.style.cssText = 'background:transparent;color:#57534e;border:none;font-size:16px;cursor:pointer;min-width:44px;min-height:44px;padding:0;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;';
     closeBtn.onclick = function() {
       sessionStorage.setItem('sheba_app_bar_dismissed_whereeatin', '1');
       bar.remove();

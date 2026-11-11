@@ -54,6 +54,7 @@ PAGE = """<!DOCTYPE html>
 <link rel="canonical" href="{canonical}">
 __OG__
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="/assets/site.css">
 <style>
   :root{{--ink:#111827;--muted:#4b5563;--brand:#dc2626;--paper:#fef2f2;--line:#e5e7eb;--ok:#065f46;--okbg:#ecfdf5}}
   *{{box-sizing:border-box}}

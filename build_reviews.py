@@ -86,6 +86,7 @@ def build() -> str:
 <meta name="description" content="Real customer reviews for Southern Colorado food trucks, a five-star average per truck, and the HIGHLY RECOMMENDED badge that has to be earned.">
 <link rel="canonical" href="{site_base.url('reviews/')}">
 __OG__
+<link rel="stylesheet" href="/assets/site.css">
 <style>
   :root{{--ink:#111827;--muted:#4b5563;--brand:#dc2626;--paper:#fef2f2;--line:#e5e7eb}}
   *{{box-sizing:border-box}}

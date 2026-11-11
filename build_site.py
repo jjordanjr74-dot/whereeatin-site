@@ -675,7 +675,7 @@ window.updateWweCalc = function () {{
 }})();
 </script>
   <script src="/assets/mobile-app-install.js" defer></script>
-</body>
+<script src="/assets/funnel-beacon.js" defer></script></body>
 </html>
 """
 

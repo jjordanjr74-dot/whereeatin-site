@@ -220,13 +220,13 @@ details[open] summary::after{content:"–"}
 details p{margin:12px 0 0;color:var(--ink-2)}
 
 /* banner + footer */
-.banner{background:var(--ink);color:#fff;border-radius:2px;padding:clamp(30px,4vw,48px);display:grid;
+.banner{background:var(--paper-2,#f6efe4);color:var(--ink,#1c1917);border-radius:2px;padding:clamp(30px,4vw,48px);display:grid;
   grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:24px;align-items:center}
 @media (max-width:800px){.banner{grid-template-columns:1fr}}
-.banner h2{color:#fff}
-.banner p{color:#d9d0c4;margin-bottom:0}
-.banner .btn-ghost{color:#fff;border-color:rgba(255,255,255,.6)}
-.banner .btn-ghost:hover{border-color:#fff}
+.banner h2{color:var(--ink,#1c1917)}
+.banner p{color:#44403c;margin-bottom:0}
+.banner .btn-ghost{color:var(--ink,#1c1917);border-color:rgba(28,25,23,.45)}
+.banner .btn-ghost:hover{border-color:var(--ink,#1c1917)}
 .foot{background:var(--paper-2);border-top:1px solid var(--line);padding:56px 0 36px;margin-top:0}
 .foot-grid{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));gap:28px}
 @media (max-width:800px){.foot-grid{grid-template-columns:1fr 1fr}}
@@ -259,3 +259,75 @@ details p{margin:12px 0 0;color:var(--ink-2)}
   .js .reveal{opacity:1;transform:none}
 }
 @media print{.nav,.sitnav,.hero-cta,.banner{display:none}}
+
+/* $50K Enterprise Touch Target Floor */
+.btn, .btn-sm, .chip, .filter-bar .chip {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-sm {
+  padding: 10px 16px;
+}
+.chip {
+  padding: 9px 16px;
+}
+.card-foot a, .foot-links a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 4px;
+}
+
+/* $50K Touch Target Floor v2: every interactive control >=44x44; checkbox hit area via label */
+main a, main button, main input, main select, main textarea, main [role=button],
+footer a, nav a, nav button, .sitnav a, .sitnav button, .foot-links a, .sitfoot a,
+.sitnav .nav-toggle, .sitnav .brand, a[href*="faq"], a[href*="salida"] {
+  min-height: 44px; min-width: 44px; box-sizing: border-box;
+}
+.fav-btn { min-width: 44px; min-height: 44px; }
+main label:has(> input[type=checkbox]) { min-height: 44px; display: flex; align-items: center; }
+main input[type=checkbox] { flex: 0 0 44px; width: 44px; min-width: 44px; height: 44px; min-height: 44px; margin: 0; }
+
+/* $50K Touch Target Floor v3: inline text links get a 44px hit box without changing layout */
+main article.vendor h3 > a, main li > a, main ul > li > a, footer li > a, .sitfoot a, .foot-legal a, .foot-links a {
+  display: inline-flex; align-items: center; min-height: 44px; min-width: 44px;
+}
+main p > a, main details a, main aside a, main .lead a, .foot-legal a, footer p a {
+  padding-block: 14px; box-sizing: border-box;
+}
+
+/* $50K Touch Target Floor v4: travel list links, footer nav, Leaflet map markers, radar selects */
+main ol > li > div.meta > a, footer.sitfoot nav > a, footer.sitfoot > div.sitfoot-in > div > a {
+  display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; box-sizing: border-box; padding-block: 12px;
+}
+.leaflet-marker-icon, .leaflet-marker-icon img { min-width: 44px; min-height: 44px; }
+.leaflet-marker-icon { display: flex !important; align-items: center; justify-content: center; }
+main select { min-height: 44px; }
+
+/* $50K Touch Target Floor v5: city list links, Leaflet marker hit box (inline icon sizes overridden), footer nav */
+main ul > li > span > a, ul > li > span > a {
+  display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; box-sizing: border-box; padding-block: 12px;
+}
+.leaflet-marker-icon { width: 44px !important; height: 44px !important; margin-left: -22px !important; margin-top: -22px !important; background: transparent; }
+.leaflet-marker-icon img { width: 25px !important; height: 41px !important; margin: 0 auto; position: relative; top: 1px; }
+footer.sitfoot nav a { display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; box-sizing: border-box; padding-inline: 10px; }
+
+/* $50K Touch Target Floor v6: radar selects, Leaflet zoom + attribution hit boxes */
+main .row select, select { min-height: 44px; font-size: 16px; }
+.leaflet-control-zoom a, .leaflet-control-zoom-in, .leaflet-control-zoom-out { width: 44px !important; height: 44px !important; line-height: 44px !important; font-size: 22px; }
+.leaflet-control-attribution a { display: inline-flex; align-items: center; min-height: 44px; padding: 12px 6px; }
+
+/* $50K Touch Target Floor v7: JS-built travel list (div.meta wrapper), checkbox label hit box, footer note link */
+ol > li > div.meta > a, ol > li > div.meta a, .meta a, footer.note > a, footer.note a {
+  display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; box-sizing: border-box; padding-block: 12px;
+}
+section.panel label.chk, label.chk { min-height: 44px; display: flex; align-items: center; }
+section.panel label.chk > input[type=checkbox], label.chk > input[type=checkbox] { width: 44px; height: 44px; min-width: 44px; min-height: 44px; margin: 0; flex: 0 0 44px; }
+
+/* $50K Touch Target Floor v8: inline prose links in any paragraph (bot handle, contact links) */
+p > a[href^="https://t.me"], p > a[href^="tel:"], p a[href*="t.me/"], main p a { display: inline-block; min-height: 44px; line-height: 44px; padding-inline: 2px; box-sizing: border-box; }
+
+/* $50K Clearance v1: fixed install bar must never cover page content at scroll bottom (same mechanism as Political Payola) */
+body { padding-bottom: 72px; }

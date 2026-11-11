@@ -90,6 +90,7 @@ PAGE = """<!DOCTYPE html>
 <link rel="canonical" href="__CANON__">
 __OG__
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="/assets/site.css">
 <style>
   :root{--ink:#111827;--muted:#4b5563;--brand:#dc2626;--paper:#fef2f2;--line:#e5e7eb}
   *{box-sizing:border-box}
