@@ -1026,9 +1026,9 @@ window.updateWweCalc = function () {
   var yrSave = Math.round(wk * 0.25 * 52);
   var lang = document.documentElement.getAttribute('data-lang') || 'en';
   if (lang === 'es') {
-    out.textContent = 'Con $' + wk.toLocaleString() + '/semana en ventas, 0% de comisión en Where We Eatin'? le ahorra a su lonchera $' + yrSave.toLocaleString() + '/año frente al 25% de las apps de entrega.';
+    out.textContent = "Con $" + wk.toLocaleString() + "/semana en ventas, 0% de comisión en Where We Eatin'? le ahorra a su lonchera $" + yrSave.toLocaleString() + "/año frente al 25% de las apps de entrega.";
   } else {
-    out.textContent = 'At $' + wk.toLocaleString() + '/wk in orders, 0% commission on Where We Eatin'? saves your truck $' + yrSave.toLocaleString() + '/year vs. a 25% delivery-app cut.';
+    out.textContent = "At $" + wk.toLocaleString() + "/wk in orders, 0% commission on Where We Eatin'? saves your truck $" + yrSave.toLocaleString() + "/year vs. a 25% delivery-app cut.";
   }
 };
 (function () {
