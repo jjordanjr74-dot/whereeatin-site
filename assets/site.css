@@ -331,3 +331,11 @@ p > a[href^="https://t.me"], p > a[href^="tel:"], p a[href*="t.me/"], main p a {
 
 /* $50K Clearance v1: fixed install bar must never cover page content at scroll bottom (same mechanism as Political Payola) */
 body { padding-bottom: 72px; }
+
+/* WWE claim CTA above the fold (2026-11-19) — warm editorial, no dark slate, >=44px targets */
+.cta-claim{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;margin:16px 0 0;
+  padding:14px 16px;background:var(--paper-2);border:1px solid var(--line);
+  border-left:3px solid var(--accent);border-radius:2px}
+.cta-claim .btn{flex:0 0 auto}
+.cta-claim .cta-note{flex:1 1 220px;min-width:0;font:400 .86rem/1.5 var(--font-body);color:var(--ink-2)}
+@media (max-width:520px){.cta-claim{padding:12px}.cta-claim .cta-note{flex-basis:100%}}
