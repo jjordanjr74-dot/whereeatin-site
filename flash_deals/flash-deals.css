@@ -84,7 +84,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  background: linear-gradient(135deg, #0f766e, #14b8a6);
+  background: linear-gradient(135deg, #0f766e, #0f766e);
   color: white;
   padding: 8px 16px;
   border-radius:2px;
@@ -119,8 +119,8 @@
 .truck-flash-deal-badge {
   position: absolute;
   top: -10px;
-  right: -10px;
-  background: linear-gradient(135deg, #b23a26, #ea580c);
+  right: 8px;
+  background: linear-gradient(135deg, #b23a26, #c2410c);
   color: white;
   padding: 6px 12px;
   border-radius:2px;
@@ -182,7 +182,7 @@
 .flash-deal-item:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 24px rgba(15, 118, 110, 0.15);
-  border-color: #14b8a6;
+  border-color: #0f766e;
 }
 
 .deal-header {
@@ -232,7 +232,7 @@
 }
 
 .deal-action {
-  background: linear-gradient(135deg, #b23a26, #f97316);
+  background: linear-gradient(135deg, #b23a26, #c2410c);
   color: white;
   border: none;
   padding: 12px 24px;
@@ -244,7 +244,7 @@
 }
 
 .deal-action:hover {
-  background: linear-gradient(135deg, #f97316, #ea580c);
+  background: linear-gradient(135deg, #c2410c, #c2410c);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
 }
