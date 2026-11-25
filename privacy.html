@@ -25,7 +25,18 @@
     h2 { font-size: 1.4rem; margin-top: 32px; border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 6px; }
     .back { display: inline-block; margin-bottom: 24px; text-decoration: none; font-weight: 600; }
     .pill { display: inline-block; padding: 4px 10px; border-radius: 999px; background: rgba(255,255,255,0.08); font-size: 13px; }
-  </style>
+  /* 44px touch-target floor (WCAG 2.5.5) rendered-DOM 2026-11-25 */
+header a, nav a, footer a, [role=tab], button, select, .chip, .pill, .tag, .skip, .back,
+a[href^="mailto:"], a[href^="tel:"], a[download], a[href$=".apk"],
+[class*="btn"], [class*="cta"], [class*="lang"] a, [class*="lang"] button {
+  min-height: 44px; min-width: 44px; display: inline-flex; align-items: center;
+}
+/* inline text links: expand the hit area without changing line layout */
+a { min-height: 44px; }
+p a, h1 a, h2 a, h3 a, h4 a, h5 a, td a, dd a, strong a, b a, em a, span a, a:has(> strong), a:has(> b), a:has(> em), .footer-sister a, .err-hint a, li a {
+  padding: 15px 4px; margin: -15px -4px;
+}
+</style>
 </head>
 <body>
   <div class="wrap">
